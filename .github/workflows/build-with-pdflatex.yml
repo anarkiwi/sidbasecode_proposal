@@ -17,7 +17,7 @@ jobs:
       - name: Gather build artifacts
         run: mkdir build && cp -r sidbasecode_proposal.pdf build/
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pdflatex
           path: build/
