@@ -1,0 +1,24 @@
+---
+name: Build with pdflatex
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+      - name: Compile
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: sidbasecode_proposal.tex
+          working_directory: . 
+          compiler: pdflatex
+          args:
+      - name: Gather build artifacts
+        run: mkdir build && cp -r sidbasecode_proposal.pdf build/
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdflatex
+          path: build/
+          retention-days: 5
