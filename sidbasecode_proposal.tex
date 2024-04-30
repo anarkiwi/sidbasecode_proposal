@@ -47,12 +47,41 @@
         \end{center}
 
         \begin{abstract}
+          An early 8 bit home computer, the Commodore 64, contained
+          capable sound synthesis hardware for the the period, but no
+          built in software tools to program it with.  Composers were
+          required to write low level machine code to fully access the
+          sound hardware's features. This resulted in musical
+          performances such as game sound tracks, being realized as
+          machine code programs, including the ``patches'' (synthesis
+          pipeline configuration from moment to moment) and
+          score. Over time composers invented new patches and borrowed
+          or improved upon the work of others by reverse engineering
+          machine code and experimenting with hardware programming
+          techniques not anticipated by the manufacturer.  This
+          process continues today in the form of a competitive
+          ``demoscene'' community.
 
-        This document contains the instructions for preparing a valid 2024--2025 Bloomberg Data Science Ph.D. Fellowship Application research proposal. This document conforms to its own specifications and is an example of what your proposal should look like.
+          It is proposed to make a musicological enumeration and study
+          of all known Commodore 64 sound programming techniques,
+          detecting and attributing the invention of each technique
+          and its variations over time. This would be done by
+          automating the analysis of a large collection of Commodore
+          64 music in the High Voltage SID Collection (over 55,000
+          performances), with software decompilation and reverse
+          engineering tools developed specifically for the purpose.
 
-        The abstract should briefly describe the proposal and make the case for the proposal to non-experts in your particular field. The rest of the proposal should be directed at a technical data science audience.
-
-        \textbf{Collaborators}: list the names and affiliations of expected collaborators on the project here
+          Beyond the musicological results, machine learning tools
+          would be developed to detect the machine language
+          programming techniques characteristic of given composers and
+          to generate new machine language programs. These tools may
+          inform and advance current discussions on the role of
+          generative music and attribution of human composers
+          contributions to techniques in AI training datasets. While
+          the Commodore 64 is a limited platform, its limitations
+          facilitate a complete investigation of its capabilities, and
+          may inform further research on automated composer attribution
+          generally.
         \end{abstract}
 
         \begin{center}
@@ -65,29 +94,29 @@
 
 \section{Introduction}
 
-\subsection{Formatting}
+%% \subsection{Formatting}
 
-The formatting instructions are directed to applicants for the 2024--2025 Bloomberg Data Science Ph.D. Fellowship Application. All applicants are required to adhere to the formatting specifications described in this document. These specifications were created with the intent of providing an equitable format and ensure that applications are similar in length and format.
+%% The formatting instructions are directed to applicants for the 2024--2025 Bloomberg Data Science Ph.D. Fellowship Application. All applicants are required to adhere to the formatting specifications described in this document. These specifications were created with the intent of providing an equitable format and ensure that applications are similar in length and format.
 
-Applicants should adhere to all the formatting instructions described in this document. \textbf{Failure to do so will result in the Fellowship application not being reviewed.} In particular, the should be no changes to page size, spacing, margins and font size as to what is specified in this document.
-Proposals must be in two-column format, with the exception of the title, applicant name and abstract, which must be centered at the top of the first page, and any full-width figures or tables.
+%% Applicants should adhere to all the formatting instructions described in this document. \textbf{Failure to do so will result in the Fellowship application not being reviewed.} In particular, the should be no changes to page size, spacing, margins and font size as to what is specified in this document.
+%% Proposals must be in two-column format, with the exception of the title, applicant name and abstract, which must be centered at the top of the first page, and any full-width figures or tables.
 
-Applicants are required to provide a Portable Document Format (PDF) version of their proposal in the SoftConf application website (\url{https://www.softconf.com/n/Bloomberg2024/}), together with the CV and the referee names. \textbf{The Fellowship proposal should be no more than two pages of content for PhD Fellowship applications, plus unlimited pages for references.}
+%% Applicants are required to provide a Portable Document Format (PDF) version of their proposal in the SoftConf application website (\url{https://www.softconf.com/n/Bloomberg2024/}), together with the CV and the referee names. \textbf{The Fellowship proposal should be no more than two pages of content for PhD Fellowship applications, plus unlimited pages for references.}
 
-All figures and tables that are part of the proposal should fit the page limit. A sample figure is presented in Figure~\ref{fig:fig1}. A sample table that includes how to cite references is presented in Table~\ref{tbl:tbl1}. We do not allow for submission of additional material such as appendices and supplementary materials like data or code.
+%% All figures and tables that are part of the proposal should fit the page limit. A sample figure is presented in Figure~\ref{fig:fig1}. A sample table that includes how to cite references is presented in Table~\ref{tbl:tbl1}. We do not allow for submission of additional material such as appendices and supplementary materials like data or code.
 
-\subsection{Structure}
+%% \subsection{Structure}
 
-The following sections described in this template can be used as a guide to structure the proposal, but will not be enforced.
+%% The following sections described in this template can be used as a guide to structure the proposal, but will not be enforced.
 
-You can use the \texttt{Introduction} section to:
+%% You can use the \texttt{Introduction} section to:
 
-\begin{itemize}
-    \item briefly describe the broad research area of the proposal;
-    \item the limitations of current research this proposal aims to address;
-    \item the motivation and impact of the work planned in this research proposal;
-    \item any additional background required for understanding the proposal.
-\end{itemize}
+%% \begin{itemize}
+%%     \item briefly describe the broad research area of the proposal;
+%%     \item the limitations of current research this proposal aims to address;
+%%     \item the motivation and impact of the work planned in this research proposal;
+%%     \item any additional background required for understanding the proposal.
+%% \end{itemize}
 
 \begin{table*}
         \centering
