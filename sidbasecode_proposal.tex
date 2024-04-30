@@ -65,11 +65,14 @@
           It is proposed to make a musicological enumeration and study
           of all known Commodore 64 sound programming techniques,
           detecting and attributing the invention of each technique
-          and its variations over time. This would be done by
-          automating the analysis of a large collection of Commodore
-          64 music in the High Voltage SID Collection (over 55,000
-          performances), with software decompilation and reverse
-          engineering tools developed specifically for the purpose.
+          and its variations over time, with an approach inspired by
+          the analysis of biological DNA.
+
+          This would be done by automating the analysis of a large
+          collection of Commodore 64 music in the High Voltage SID
+          Collection (over 55,000 performances), with software
+          decompilation and reverse engineering tools developed
+          specifically for the purpose.
 
           Beyond the musicological results, machine learning tools
           would be developed to detect the machine language
@@ -80,8 +83,8 @@
           contributions to techniques in AI training datasets. While
           the Commodore 64 is a limited platform, its limitations
           facilitate a complete investigation of its capabilities, and
-          may inform further research on automated composer attribution
-          generally.
+          may inform further research on automated composer
+          attribution generally.
         \end{abstract}
 
         \begin{center}
@@ -92,8 +95,52 @@
 
 \begin{multicols*}{2}
 
-\section{Introduction}
+  \section{Introduction}
 
+  At first glance musicological analysis of Commodore 64 music might
+  appear simple as the hardware while long out of production is still
+  commonplace today and well documented. The Commodore 64 sound
+  hardware (the SID chip) contains features familiar to composers
+  today - multiple voices each with a choice of waveform, the ability
+  to combine waveforms and voices, and software programmable filters,
+  and can be completely programmed through 28, 8 bit registers.
+
+  However, given the lack of built in sound software, the hardware can
+  only be fully utilized with 6502 machine code, and the hardware has
+  variable performance differences even within the same model number,
+  particularly in the filters. While popular Commodore 64 emulator,
+  VICE, contains a software emulated SID and hardware SID emulators
+  exist, the behavior original hardware has proven difficult to
+  reproduce exactly and emulator detects continue to be discovered.
+  Therefore analysis must include not only methods to work with
+  original hardware, but original machine code as well.
+
+  The proposed overall approach, is to develop decompilation tools
+  that intercept all calls between a machine language program and an
+  emulated SID chip. A call is defined as a point in time, a SID
+  register, and the value input (or output - see below) to that
+  register).
+
+  The sequence and content of the calls contain the ``patch''
+  information (how a voice is being manipulated - for example
+  switching from a pulse waveform to a noise waveform within 20ms, to
+  produce a percussive sound), as well as score information over a
+  longer time scale (for repeated subsequences producing percussive
+  sounds at regular intervals).
+
+  These sequences are analogous to DNA - a given performance will
+  include sequences programmed by a composer, either of their own
+  invention (including re-sequencing from another performance that
+  might use similar patches), or sequences recovered from the work of
+  others.
+
+  These ``DNA'' sequences can then be indexed across all known
+  performances, allowing for variation (both variations that produce
+  the same audio output, and variations that produce slightly or
+  vastly different output depending on the precise order in which they
+  are executed). Also like DNA, these sequences can be recombined and
+  edited to produce new sequences, compared between sequences, and a
+  given subsequence's effect on audio output can be determined.
 %% \subsection{Formatting}
 
 %% The formatting instructions are directed to applicants for the 2024--2025 Bloomberg Data Science Ph.D. Fellowship Application. All applicants are required to adhere to the formatting specifications described in this document. These specifications were created with the intent of providing an equitable format and ensure that applications are similar in length and format.
