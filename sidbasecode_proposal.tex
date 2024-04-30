@@ -48,15 +48,17 @@
 
         \begin{abstract}
           An early 8 bit home computer, the Commodore 64, contained
-          capable sound synthesis hardware for the the period, but no
-          built in software tools to program it with.  Composers were
-          required to write low level machine code to fully access the
-          sound hardware's features. This resulted in musical
-          performances such as game sound tracks, being realized as
-          machine code programs, including the ``patches'' (synthesis
-          pipeline configuration from moment to moment) and
-          score. Over time composers invented new patches and borrowed
-          or improved upon the work of others by reverse engineering
+          capable sound synthesis hardware for the the period but
+          without accompanying software tools.  Composers were
+          required to understand the computer's architecture and write
+          low level machine code to fully access the sound hardware's
+          features. Therefore musical performances such as game
+          sound tracks were realized as machine code programs,
+          including the ``patches'' (synthesis pipeline configuration
+          from moment to moment) and score.
+
+          Over time composers invented new patches and borrowed or
+          improved upon the work of others by reverse engineering
           machine code and experimenting with hardware programming
           techniques not anticipated by the manufacturer.  This
           process continues today in the form of a competitive
@@ -64,7 +66,7 @@
 
           It is proposed to make a musicological enumeration and study
           of all known Commodore 64 sound programming techniques,
-          detecting and attributing the invention of each technique
+          attributing the invention of each technique
           and its variations over time, with an approach inspired by
           the analysis of biological DNA.
 
@@ -108,23 +110,23 @@
   However, given the lack of built in sound software, the hardware can
   only be fully utilized with 6502 machine code, and the hardware has
   variable performance differences even within the same model number,
-  particularly in the filters. While popular Commodore 64 emulator,
-  VICE, contains a software emulated SID and hardware SID emulators
-  exist, the behavior original hardware has proven difficult to
-  reproduce exactly and emulator detects continue to be discovered.
-  Therefore analysis must include not only methods to work with
-  original hardware, but original machine code as well.
+  particularly in filter characteristics. While several software and
+  hardware emulations of the SID chip exist, the behavior original
+  hardware has proven difficult to reproduce exactly and emulator
+  detects continue to be discovered.  Therefore analysis must include
+  not only methods to work with original hardware, but original
+  machine code as well.
 
-  The proposed overall approach, is to develop decompilation tools
+  The proposed overall approach is to develop decompilation tools
   that intercept all calls between a machine language program and an
   emulated SID chip. A call is defined as a point in time, a SID
   register, and the value input (or output - see below) to that
-  register).
+  register.
 
   The sequence and content of the calls contain the ``patch''
   information (how a voice is being manipulated - for example
   switching from a pulse waveform to a noise waveform within 20ms, to
-  produce a percussive sound), as well as score information over a
+  produce a percussive sound, as well as score information over a
   longer time scale (for repeated subsequences producing percussive
   sounds at regular intervals).
 
@@ -141,20 +143,86 @@
   are executed). Also like DNA, these sequences can be recombined and
   edited to produce new sequences, compared between sequences, and a
   given subsequence's effect on audio output can be determined.
+
+  \section{Methodology}
+
+  \subsection{Sequence segmentation}
+
+  The fundamental technique upon which the analysis will be performed,
+  is the segmentation of sub sequences of SID register calls at
+  enumerated intervals within the sequence accomplishing an entire
+  performance. Then, identifying repeated sequences and variations
+  and comparing sequences across thousands of performances.
+
+  From a first principles perspective, there are several anticipated
+  stages in segmentation. It assumed that for a given SID chip
+  (emulated or otherwise) initialized to the same state, that the same
+  sequence of instructions will result in the same output. This
+  assumption will need to be verified throughout as if not correct
+  would invalidate comparison. It is also expected that a set of
+  different sequences may result in the same audio output, so there
+  may be a many to one relationship for a given audio output.
+
+  It follows also that there may be sequences that produce no change
+  in audio output (for example, repeatedly writing the same value to a
+  frequency register, or writing a value to a register with less than 8
+  significant bits). These sequences can be eliminated because by definition
+  their significance is inaudible.
+
+  Depending on the machine code making the SID register calls,
+  there may be variation in the time taken between individual items in
+  a sequence (for example, one program might take longer to calculate
+  a new frequency value than another using a different algorithm, even
+  though both programs end up calculating the same value). This
+  difference may or may not be audible. A threshold will have to be
+  defined (for example, if SID register changes are accomplished within
+  one audio sample time at 44.1kHz no difference would be observed).
+  Nonetheless, verification of the significance (or non significance)
+  of small differences in timing between the same register calls
+  will be required.
+
+  The SID chip has 3 voices, which can be configured in pairs for some
+  FM effects. A given voice may only be paired with a fixed choice of one
+  other (for example, voices 1 and 3 are paired). Due to the very small
+  number of voices available composers made extensive use of multiplexing,
+  for example executing a percussion sound sequence on voice 1, then executing
+  a simple pulse wave on voice 1 while executing the same percussion sound
+  sequence on voice 2. It is assumed that all single voices are interchangeable,
+  and that all voice pairs are interchangeable, assumptions that must be
+  verified.
+
+  Aside from the voices, the SID chip has programmable filters and
+  a 4 bit volume register. All voices are affected by the volume
+  register and can be selectively routed to the filters. There is
+  therefore another kind of sequence state to be considered,
+  individual voice states paired with a specific filter and volume
+  state. These combinations must be modeled for comparison.
+
+\section{Preliminary work}
+
+\section{Thesis structure, timeline, plan for dissemination}
+
+\section{Novel contributions and conclusions}
+
+Given the constraints of the platform, it should be possible to
+comphrensibly enumerate every known SID programming technique as
+represented in the HVSC, including attribution of first use of a
+technique to a specific performance and composer advancing the
+completeness of understanding of the genre and synthesis techniques
+within a limited platform.
+
+The tools and techniques may be applicable to synthesis platforms
+beyond the Commodore 64 (for example, it may be possible to parse
+Abelton Live set files at scale, attributing innovation in certain
+patch configurations to composers, or to programmatically
+generate new set files with machine learning tools).
+
+
 %% \subsection{Formatting}
-
-%% The formatting instructions are directed to applicants for the 2024--2025 Bloomberg Data Science Ph.D. Fellowship Application. All applicants are required to adhere to the formatting specifications described in this document. These specifications were created with the intent of providing an equitable format and ensure that applications are similar in length and format.
-
-%% Applicants should adhere to all the formatting instructions described in this document. \textbf{Failure to do so will result in the Fellowship application not being reviewed.} In particular, the should be no changes to page size, spacing, margins and font size as to what is specified in this document.
-%% Proposals must be in two-column format, with the exception of the title, applicant name and abstract, which must be centered at the top of the first page, and any full-width figures or tables.
-
-%% Applicants are required to provide a Portable Document Format (PDF) version of their proposal in the SoftConf application website (\url{https://www.softconf.com/n/Bloomberg2024/}), together with the CV and the referee names. \textbf{The Fellowship proposal should be no more than two pages of content for PhD Fellowship applications, plus unlimited pages for references.}
 
 %% All figures and tables that are part of the proposal should fit the page limit. A sample figure is presented in Figure~\ref{fig:fig1}. A sample table that includes how to cite references is presented in Table~\ref{tbl:tbl1}. We do not allow for submission of additional material such as appendices and supplementary materials like data or code.
 
 %% \subsection{Structure}
-
-%% The following sections described in this template can be used as a guide to structure the proposal, but will not be enforced.
 
 %% You can use the \texttt{Introduction} section to:
 
@@ -163,7 +231,13 @@
 %%     \item the limitations of current research this proposal aims to address;
 %%     \item the motivation and impact of the work planned in this research proposal;
 %%     \item any additional background required for understanding the proposal.
-%% \end{itemize}
+  %% \end{itemize}
+
+%% https://www.hvsc.c64.org/ High Voltage SID Collection %% https://archive.org/details/c64-programmer-ref C64 programmers reference guide
+%% https://web.archive.org/web/20221029042239if_/http://archive.6502.org/datasheets/mos_6581_sid.pdf SID datasheet
+%% https://github.com/NationalSecurityAgency/ghidra Ghidra
+%% https://github.com/anarkiwi/vessel vessel
+%% https://github.com/anarkiwi/vap vap
 
 \begin{table*}
         \centering
@@ -185,14 +259,6 @@
         \caption{This is a sample figure.}
         \label{fig:fig1}
 \end{figure}
-
-\section{Methodology}
-
-\section{Preliminary work}
-
-\section{Thesis structure, timeline, plan for dissemination}
-
-\section{Novel contributions and conclusions}
 
 \end{multicols*}
 
