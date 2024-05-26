@@ -47,47 +47,62 @@
         \end{center}
 
         \begin{abstract}
-          An early 8 bit home computer, the Commodore 64, contained
-          capable sound synthesis hardware for the the period but
-          without accompanying software tools.  Composers were
-          required to understand the computer's architecture and write
-          low level machine code to fully access the sound hardware's
-          features. Therefore musical performances such as game
-          sound tracks were realized as machine code programs,
-          including the ``patches'' (synthesis pipeline configuration
-          from moment to moment) and score.
+          A computational musicological analysis of all known musical
 
-          Over time composers invented new patches and borrowed or
-          improved upon the work of others by reverse engineering
-          machine code and experimenting with hardware programming
-          techniques not anticipated by the manufacturer.  This
-          process continues today in the form of a competitive
-          ``demoscene'' community.
+          performances (from the curated High Voltage SID collection
 
-          It is proposed to make a musicological enumeration and study
-          of all known Commodore 64 sound programming techniques,
-          attributing the invention of each technique
-          and its variations over time, with an approach inspired by
-          the analysis of biological DNA.
+          including over 55,000 performances) on the Commodore 64
 
-          This would be done by automating the analysis of a large
-          collection of Commodore 64 music in the High Voltage SID
-          Collection (over 55,000 performances), with software
-          decompilation and reverse engineering tools developed
-          specifically for the purpose.
+          computer platform.  The analysis will identify and attribute
 
-          Beyond the musicological results, machine learning tools
-          would be developed to detect the machine language
-          programming techniques characteristic of given composers and
-          to generate new machine language programs. These tools may
-          inform and advance current discussions on the role of
-          generative music and attribution of human composers
-          contributions to techniques in AI training datasets. While
-          the Commodore 64 is a limited platform, its limitations
-          facilitate a complete investigation of its capabilities, and
-          may inform further research on automated composer
-          attribution generally.
-        \end{abstract}
+          innovation in expressive techniques in the form
+
+          of machine language programs that produce unique timbres -
+
+          metaphorical DNA - to composers.
+
+
+
+          Contemporary machine learning techniques will be used on
+
+          decompiled Commodore 64 performances (which are realized
+
+          in the form of complete machine language programs). The
+
+          Commodore 64 platform is chosen as it is simple enough to make
+
+          an exhaustive study of performances, while still being sonically
+
+          capable (including a 3 voice, multiple waveform synthesizer
+
+          with basic FM and filter features).  The analysis
+
+          will operate directly on low level synthesizer machine
+
+          language commands rather than audio samples (both simplifying
+
+          the analysis while achieving an exact description of
+
+          musical expression).
+
+
+
+          As well as enumerating the evolution of musical expression,
+
+          the analysis will produce a dataset and machine learning
+
+          tools that can identify the use of specific techniques
+
+          in a given performance (whether machine or human generated),
+
+          which may serve to advance current discussions around
+
+          the role of machine learning in composition. The tools
+
+          and concepts may also be transferable to less constrained
+
+          systems in future work.
+         \end{abstract}
 
         \begin{center}
                 \rule{150mm}{0.2mm}
@@ -100,7 +115,7 @@
   \section{Introduction}
 
   At first glance musicological analysis of Commodore 64 music might
-  appear simple as the hardware while long out of production is still
+  appear trivial as the hardware while long out of production is still
   commonplace today and well documented. The Commodore 64 sound
   hardware (the SID chip) contains features familiar to composers
   today - multiple voices each with a choice of waveform, the ability
