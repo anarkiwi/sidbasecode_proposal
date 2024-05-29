@@ -1,0 +1,32 @@
+---
+name: release 
+
+on:
+  release:
+    types:
+      - published
+    tags:
+      - 'v*'
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+      - name: Compile
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: sidbasecode_proposal.tex
+          working_directory: . 
+          compiler: pdflatex
+          args:
+    - name: upload PAL PRG
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./sidbasecode_proposal.pdf
+        asset_name: sidbasecode_proposal.pdf
+        asset_content_type: application/pdf
