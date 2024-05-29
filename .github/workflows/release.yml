@@ -9,7 +9,7 @@ on:
       - 'v*'
 
 jobs:
-  build_latex:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
