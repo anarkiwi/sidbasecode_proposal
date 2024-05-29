@@ -39,7 +39,8 @@
                 \vspace{1em}
                 \textit{
                   Jim Murphy, Victoria University of Wellington\\
-                  Dugal McKinnon, Victoria University of Wellington}\\
+                  Dugal McKinnon, Victoria University of Wellington
+                  Tom White, Victoria University of Wellington}\\
         \end{center}
 
         \begin{center}
@@ -48,59 +49,34 @@
 
         \begin{abstract}
           A computational musicological analysis of all known musical
-
           performances (from the curated High Voltage SID collection
-
           including over 55,000 performances) on the Commodore 64
-
           computer platform.  The analysis will identify and attribute
-
-          innovation in expressive techniques in the form
-
-          of machine language programs that produce unique timbres -
-
-          metaphorical DNA - to composers.
-
-
+          innovation in expressive techniques in the form of machine
+          language programs that produce unique timbres - metaphorical
+          DNA - to composers.
 
           Contemporary machine learning techniques will be used on
+          decompiled Commodore 64 performances (which are realized in
+          the form of complete machine language programs). The
+          Commodore 64 platform is chosen as it is simple enough to
+          make an exhaustive study of performances, while still being
+          sonically capable (including a 3 voice, multiple waveform
+          synthesiser
 
-          decompiled Commodore 64 performances (which are realized
-
-          in the form of complete machine language programs). The
-
-          Commodore 64 platform is chosen as it is simple enough to make
-
-          an exhaustive study of performances, while still being sonically
-
-          capable (including a 3 voice, multiple waveform synthesizer
-
-          with basic FM and filter features).  The analysis
-
-          will operate directly on low level synthesizer machine
-
-          language commands rather than audio samples (both simplifying
-
-          the analysis while achieving an exact description of
-
-          musical expression).
-
-
+          with basic FM and filter features).  The analysis will
+          operate directly on low level synthesiser machine language
+          commands rather than audio samples (both simplifying the
+          analysis while achieving an exact description of musical
+          expression).
 
           As well as enumerating the evolution of musical expression,
-
           the analysis will produce a dataset and machine learning
-
-          tools that can identify the use of specific techniques
-
-          in a given performance (whether machine or human generated),
-
-          which may serve to advance current discussions around
-
-          the role of machine learning in composition. The tools
-
-          and concepts may also be transferable to less constrained
-
+          tools that can identify the use of specific techniques in a
+          given performance (whether machine or human generated),
+          which may serve to advance current discussions around the
+          role of machine learning in composition. The tools and
+          concepts may also be transferable to less constrained
           systems in future work.
          \end{abstract}
 
@@ -113,43 +89,21 @@
 \begin{multicols*}{2}
 
   \section{Introduction}
-
   At first glance musicological analysis of Commodore 64 music might
-  appear trivial as the hardware while long out of production is still
-  commonplace today and well documented. The Commodore 64 sound
-  hardware (the SID chip) contains features familiar to composers
-  today - multiple voices each with a choice of waveform, the ability
-  to combine waveforms and voices, and software programmable filters,
-  and can be completely programmed through 28, 8 bit registers.
+  appear trivial as the hardware is simple and well documented. Its
+  value as a research platform is the sound hardware's (Sound
+  Interface Device or SID chip) essential resemblance to synthesisers
+  today (multiple voices, waveforms, and filters), combined with a
+  history of expressive innovation arising from its constraints (for
+  example, PCM sample playback despite the hardware not being designed
+  with that capability).
 
-  However, given the lack of built in sound software, the hardware can
-  only be fully utilized with 6502 machine code, and the hardware has
-  variable performance differences even within the same model number,
-  particularly in filter characteristics. While several software and
-  hardware emulations of the SID chip exist, the behavior original
-  hardware has proven difficult to reproduce exactly and emulator
-  defects continue to be discovered.  Therefore analysis must include
-  not only methods to work with original hardware, but original
-  machine code as well.
-
-  The proposed overall approach is to develop decompilation tools
-  that intercept all calls between a machine language program and an
-  emulated SID chip. A call is defined as a point in time, a SID
-  register, and the value input (or output - see below) to that
-  register.
-
-  The sequence and content of the calls contain the ``patch''
-  information (how a voice is being manipulated - for example
-  switching from a pulse waveform to a noise waveform within 20ms, to
-  produce a percussive sound, as well as score information over a
-  longer time scale (for repeated subsequences producing percussive
-  sounds at regular intervals).
-
-  These sequences are analogous to DNA - a given performance will
-  include sequences programmed by a composer, either of their own
-  invention (including re-sequencing from another performance that
-  might use similar patches), or sequences recovered from the work of
-  others.
+  SID chip programming involves sequences of changes to memory
+  registers at controlled intervals. These sequences are analogous to
+  DNA - a given performance will include sequences programmed by a
+  composer, either of their own invention (including re-sequencing
+  from another performance that might use similar patches), or
+  sequences recovered from the work of others.
 
   These ``DNA'' sequences can then be indexed across all known
   performances, allowing for variation (both variations that produce
@@ -159,15 +113,66 @@
   edited to produce new sequences, compared between sequences, and a
   given subsequence's effect on audio output can be determined.
 
+  The proposal aims to make a systematic study of all known SID
+  programming sequences (as represented in the High Voltage SID
+  Collection), which will include methods for identifying the same or
+  similar programming techniques across all performances. Since the
+  collection includes composer names and dates for most performances,
+  it will be possible to realize an evolutionary timeline of
+  techniques.
+
+  The HVSC collection also contains some performances which have not
+  yet been attributed to a composer. It is proposed to develop tools
+  can analyze these performances (or indeed any new performance) and
+  determine the similarity of the techniques used to other
+  performances (in other words, suggesting a likely composer, or the
+  composers used in the training set of a generative music system).
+
+  Machine learning classification technology will form the basis of
+  the analysis. While the goal of this research is a musicological,
+  inevitably the potential for the same machine learning technology to
+  create performances is realized. The proposal will necessarily
+  engage with this possibility to demonstrate the practicality of
+  identifying the original performances in the tools' training
+  set. The goal is to identify techniques in all performances whether
+  directly from human composers or indirectly via generative tools.
+
+  \section{Background}
+  Given the lack of built in sound software in the Commodore 64, the
+  SID chip can only be fully utilized with 6502 machine code, and the
+  chip exhibits significant performance differences (see following)
+  even within units of the same model number and revision.  While
+  several software and hardware emulations of the SID chip exist, the
+  behavior original hardware has proven difficult to reproduce exactly
+  and emulator defects continue to be discovered.  Therefore analysis
+  must include not only methods to work with original hardware, but
+  original machine code as well.
+
+  The proposed overall approach is to develop decompilation tools that
+  intercept all calls between a machine language program and an
+  emulated SID chip. A call is defined as a 3-tuple:
+
+  (T, R, V)
+
+  Where T is the elapsed time in machine cycles (approximately
+  microseconds) since the last call was made, R is a SID chip memory
+  register, and V is value to put in the register (R and V are both 8
+  bit values, whereas T may range typically range from 1-2 to 10-20
+  thousand.
+
+  The sequence and content of the calls contain the ``patch''
+  information (how a voice is being manipulated - for example
+  switching from a pulse waveform to a noise waveform within 20ms, to
+  produce a percussive sound, as well as score information over a
+  longer time scale (for repeated subsequences producing percussive
+  sounds at regular intervals).
+
   \section{Methodology}
-
-  \subsection{Sequence segmentation}
-
   The fundamental technique upon which the analysis will be performed,
   is the segmentation of sub sequences of SID register calls at
   enumerated intervals within the sequence accomplishing an entire
-  performance. Then, identifying repeated sequences and variations
-  and comparing sequences across thousands of performances.
+  performance. Then, identifying repeated sequences and variations and
+  comparing sequences across thousands of performances.
 
   From a first principles perspective, there are several anticipated
   stages in segmentation. It assumed that for a given SID chip
@@ -180,38 +185,38 @@
 
   It follows also that there may be sequences that produce no change
   in audio output (for example, repeatedly writing the same value to a
-  frequency register, or writing a value to a register with less than 8
-  significant bits). These sequences can be eliminated because by definition
-  their significance is inaudible.
+  frequency register, or writing a value to a register with less than
+  8 significant bits). These sequences can be eliminated because by
+  definition their significance is inaudible.
 
-  Depending on the machine code making the SID register calls,
-  there may be variation in the time taken between individual items in
-  a sequence (for example, one program might take longer to calculate
-  a new frequency value than another using a different algorithm, even
+  Depending on the machine code making the SID register calls, there
+  may be variation in the time taken between individual items in a
+  sequence (for example, one program might take longer to calculate a
+  new frequency value than another using a different algorithm, even
   though both programs end up calculating the same value). This
   difference may or may not be audible. A threshold will have to be
-  defined (for example, if SID register changes are accomplished within
-  one audio sample time at 44.1kHz no difference would be observed).
-  Nonetheless, verification of the significance (or non significance)
-  of small differences in timing between the same register calls
-  will be required.
+  defined (for example, if SID register changes are accomplished
+  within one audio sample time at 44.1kHz no difference would be
+  observed).  Nonetheless, verification of the significance (or non
+  significance) of small differences in timing between the same
+  register calls will be required.
 
   The SID chip has 3 voices, which can be configured in pairs for some
-  FM effects. A given voice may only be paired with a fixed choice of one
-  other (for example, voices 1 and 3 are paired). Due to the very small
-  number of voices available composers made extensive use of multiplexing,
-  for example executing a percussion sound sequence on voice 1, then executing
-  a simple pulse wave on voice 1 while executing the same percussion sound
-  sequence on voice 2. It is assumed that all single voices are interchangeable,
-  and that all voice pairs are interchangeable, assumptions that must be
-  verified.
+  FM effects. A given voice may only be paired with a fixed choice of
+  one other (for example, voices 1 and 3 are paired). Due to the very
+  small number of voices available composers made extensive use of
+  multiplexing, for example executing a percussion sound sequence on
+  voice 1, then executing a simple pulse wave on voice 1 while
+  executing the same percussion sound sequence on voice 2. It is
+  assumed that all single voices are interchangeable, and that all
+  voice pairs are interchangeable, assumptions that must be verified.
 
-  Aside from the voices, the SID chip has programmable filters and
-  a 4 bit volume register. All voices are affected by the volume
-  register and can be selectively routed to the filters. There is
-  therefore another kind of sequence state to be considered,
-  individual voice states paired with a specific filter and volume
-  state. These combinations must be modeled for comparison.
+  Aside from the voices, the SID chip has programmable filters and a 4
+  bit volume register. All voices are affected by the volume register
+  and can be selectively routed to the filters. There is therefore
+  another kind of sequence state to be considered, individual voice
+  states paired with a specific filter and volume state. These
+  combinations must be modeled for comparison.
 
   % oscillator state 3 readback for echo
 
@@ -220,13 +225,6 @@
 \section{Thesis structure, timeline, plan for dissemination}
 
 \section{Novel contributions and conclusions}
-
-Given the constraints of the platform, it should be possible to
-comphrensibly enumerate every known SID programming technique as
-represented in the HVSC, including attribution of first use of a
-technique to a specific performance and composer advancing the
-completeness of understanding of the genre and synthesis techniques
-within a limited platform.
 
 The tools and techniques may be applicable to synthesis platforms
 beyond the Commodore 64 (for example, it may be possible to parse
@@ -243,19 +241,6 @@ generate new set files with machine learning tools).
 
 %% You can use the \texttt{Introduction} section to:
 
-%% \begin{itemize}
-%%     \item briefly describe the broad research area of the proposal;
-%%     \item the limitations of current research this proposal aims to address;
-%%     \item the motivation and impact of the work planned in this research proposal;
-%%     \item any additional background required for understanding the proposal.
-%% \end{itemize}
-
-%% https://www.hvsc.c64.org/ High Voltage SID Collection %% https://archive.org/details/c64-programmer-ref C64 programmers reference guide
-%% https://web.archive.org/web/20221029042239if_/http://archive.6502.org/datasheets/mos_6581_sid.pdf SID datasheet
-%% https://github.com/NationalSecurityAgency/ghidra Ghidra
-%% https://github.com/anarkiwi/vessel vessel
-%% https://github.com/anarkiwi/vap vap
-%% https://github.com/c64cryptoboy/ChiptuneSAK
 
 \begin{table*}
         \centering
