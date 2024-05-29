@@ -11,7 +11,7 @@ jobs:
         uses: dante-ev/latex-action@latest
         with:
           root_file: sidbasecode_proposal.tex
-          working_directory: . 
+          working_directory: .
           compiler: pdflatex
           args:
       - name: Gather build artifacts
