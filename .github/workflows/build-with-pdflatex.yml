@@ -14,11 +14,3 @@ jobs:
           working_directory: .
           compiler: pdflatex
           args:
-      - name: Gather build artifacts
-        run: mkdir build && cp -r sidbasecode_proposal.pdf build/
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdflatex
-          path: build/
-          retention-days: 5
