@@ -137,11 +137,11 @@
 
   \section{Background}
 
-  \subsection{Contemperaneous platforms}
+  \subsection{Contemporaneous platforms}
   The Commodore 64 is not the only platform of the period, but is
   chosen because it is unique in its expressibility for the time and
   having significant capabilities built in without the user having to
-  add additional harware. For example, a competing platform of the
+  add additional hardware. For example, a competing platform of the
   period was the ZX Spectrum. This system had only a built in
   ``beep''er speaker with no filters or additional waveforms (though
   additional hardware was available adding among other features
@@ -184,7 +184,7 @@
   identification and prediction of SID register state, which leads to
   audio samples), there is a shared focus on the role of patch
   parameter prediction.  A research outcome therefore may be
-  a SID generative synthesiser tool that permutes initial
+  a SID generative synthesizer tool that permutes initial
   SID register state in a creative direction guided by a composer
   (for example, altering a snare drum patch over time).
 
@@ -200,20 +200,53 @@
   capabilities can be rapidly integrated with research as they become
   available. As musicology is the primary focus of the research,
   use of machine learning technologies will be constrained to
-  accessible frameworks to manage time and resources. Nonetheless,
+  accessible frameworks as a matter of practicality. Nonetheless,
   the pyTorch project has maintained an aggressive release cadence
-  (at least once per quarter year) so new technology may not
-  be out of reach for long.
+  (at least once per quarter year) so new techniques are expected
+  to become accessible quickly.
 
   \section{Methodology}
 
+  \subsection{Overview}
+  To attain a systematic analysis of all SID programming techniques
+  in the HVSC it must be possible to model and describe these
+  techniques and build a kind of DNA database. Tools will be built
+  to gather the DNA along with metadata from where and when it
+  originated, and then enable comparison and sequencing (in
+  the sense of determining the effect of a given DNA sequence).
+
+  As raw DNA, the HVSC includes metadata with each performance,
+  including composer names and release dates (where known), and some
+  advisory metadata for a SID player program about how to play the
+  performance, packaged together as a SID file. These metadata
+  includes what model of SID chip(s) to use, whether to use timer
+  based playback (see below) etc. A SID file therefore is a complete
+  machine language program that produces sound when played.
+
+  \subsection{Playroutines}
+  A machine language program, or performance, that programs the SID
+  chip to produce sound has been described as a playroutine.  The
+  playroutine may be the only program running (such as in a SID file)
+  or it may be cooperatively integrated within another program (for
+  example, a game). Since a playroutine is in the form of a Turing
+  complete computer program it can conceivably take any arbitrarily
+  complex form. However, a common form represented in the HVSC is
+  interrupt driven (a programmable timer triggers an interrupt at some
+  regular interval, which in turn triggers the playroutine to write
+  changes to the SID chip).
+
+  The thesis will use the term playroutine to represent any machine
+  code used to program the SID chip whether timer based or not, to
+  distinguish that code from other code the computer may be running at
+  the same time (as part of a game or other integrated performance).
+
   \subsection{Register logging}
-  The fundamental data upon which the analysis will be based, is
-  changes in state (register modifications) of the SID chip The
+  The most fundamental data upon which the analysis will be based,
+  are changes in state (register modifications) of the SID chip. The
   approach will be to use decompilation tools that intercept all calls
-  between a machine language program (a performance) and an emulated
-  SID chip. A performance can there for be represented as a time ordered
-  list of calls, where each call is defined as a 4-tuple:
+  between a playroutine and an emulated SID chip. A performance can
+  there for be represented as a time ordered list of calls, where each
+  call is defined as a 4-tuple:
 
   (T, C, R, V)
 
@@ -231,27 +264,46 @@
   longer time scale (for repeated subsequences producing percussive
   sounds at regular intervals).
 
+  \subsection{Voice 3 feedback}
+  The register log depends upon the SID chip being programmed as a
+  write-only device, where the order of changes is significant, but
+  the performance is not directly aware of the SID chip's audio output
+  in real time.
+
+  However, unlike the other voices, voice 3's accumulator state can be
+  read from a dedicated 16 bit register. This allows a playroutine to use
+  this state as part of further signal processing or synthesis
+  techniques. For example, this state could be entered into a delay
+  line or queue, and translated into 4 bit digital sample to be played
+  back via the volume register as delay effect.
+
+  It will therefore be necessary to include voice 3's accumulator
+  state in the register log (see above), along with an additional
+  field indicating if and where the machine code has inspected this
+  state, to enable further analysis of this technique.
+
   \subsection{VICE emulator logging modifications}
   The VICE emulator provides a debugging ``dump'' function that
   produces logs in the above format, except for the chip number
-  (VICE is modified to add this).  The output is postprocessed
-  to remove redundant state (see below).
+  (VICE is modified to add this).  The output is post processed
+  to remove redundant state (see below).  It will also be
+  necessary to add voice 3 state as above.
 
   \subsection{Sequence segmentation}
-  The fundamental technique upon which the analysis will be performed,
+  The fundamental analysis technique for the thesis is
   is the segmentation of sub sequences of SID register calls at
   enumerated intervals within the sequence accomplishing an entire
   performance. Then, identifying repeated sequences and variations and
-  comparing sequences across thousands of performances.
+  comparing sequences across many thousands of performances.
 
-  From a first principles perspective, there are several anticipated
-  stages in segmentation. It assumed that for a given SID chip
-  (emulated or otherwise) initialized to the same state, that the same
-  sequence of instructions will result in the same output. This
-  assumption will need to be verified throughout as if not correct
-  would invalidate comparison. It is also expected that a set of
-  different sequences may result in the same audio output, so there
-  may be a many to one relationship for a given audio output.
+  There are several anticipated stages in segmentation. It assumed
+  that for a given SID chip (emulated or otherwise) initialized to the
+  same state, that the same sequence of instructions will result in
+  the same output. This assumption will need to be verified throughout
+  as if not correct would invalidate comparison. It is also expected
+  that a set of different sequences may result in the same audio
+  output, so there may be a many to one relationship for a given audio
+  output.
 
   \subsection{Redundant state}
   It follows also that there may be sequences that produce no change
@@ -262,9 +314,9 @@
 
   Depending on the machine code making the SID register calls, there
   may be variation in the time taken between individual items in a
-  sequence (for example, one program might take longer to calculate a
+  sequence (for example, one playroutine might take longer to calculate a
   new frequency value than another using a different algorithm, even
-  though both programs end up calculating the same value). This
+  though both playroutines end up calculating the same value). This
   difference may or may not be audible. A threshold will have to be
   defined (for example, if SID register changes are accomplished
   within one audio sample time at 44.1kHz no difference would be
@@ -291,10 +343,42 @@
   combinations must be modeled for comparison.
 
   \subsection{ADSR envelope bugs}
+  One of the SID chip's most documented flaws is a non-deterministic
+  ADSR envelope. How the envelope operates upon triggering depends
+  upon its state (which phase it was in with what configuration) when
+  it was last triggered, unless enough time has passed to cause the
+  envelope's accumulator state to return to its initialized state.
+  This requires careful management by the composer of ADSR and voice
+  state to ensure the the envelope operates, otherwise some envelope
+  phases may be skipped or truncated causing undesired artifacts. As
+  these management techniques are expressed in precisely timed
+  register changes they are captured in the register logging model.
 
-  \subsection{Oscillator 3 feedback}
+  \subsection{SID Sound Fragment}
+  Given the SID has an envelope per voice, a convenient way to model
+  a patch is from the envelope being triggered (when the GATE bit
+  is set to 1). This distinguishes a new window (potentially encompassing
+  many other SID writes, for example changing frequencies or
+  waveforms) from a preceding window. This window be described
+  as a SID sound fragment. A SSF must include all information
+  that could influence the output of a voice (including its
+  FM paired voice, and filters).
 
   \subsection{High/low data rate}
+  A wide range of complexity in playroutines is anticipated, from
+  very simple, monophonic and mono timbral to extremely
+  complex performances incorporating voice 3 feedback, digital
+  samples and FM synthesis. It is also anticipated that playroutines
+  made be separated broadly into two groups - low data rate (where
+  the SID chip is programmed strictly on timer intervals of
+  several or perhaps even 10s of milliseconds), and high data rate
+  (where SID chip writes are required potentially several times
+  per millisecond).
+
+  The high data rate case is expected to be indicative of very
+  specific synthesis techniques (such as high resolution samples).
+  The low data rate case is expected to be much more common based
+  on HVSC's metadata (see SID file format).
 
   \section{Preliminary work}
 
@@ -308,17 +392,56 @@
 
   \subsection{Introduction}
 
+  \subsection{Reverse engineering/digital archaeology}
+
+  \subsection{Demoscene culture}
+
   \subsection{Methodology}
 
   \subsection{Evolution of SID sample playback}
+  While the SID chip was not originally specified to include digital
+  sample playback, multiple playback methods have been independently
+  discovered. These most simple method is using the volume register
+  as a 4 bit DAC, while the more complex methods involve using
+  multiple voices together to produce higher resolution waveforms
+  (sometimes in combination with the volume register). This
+  section will include a detailed analysis of the techniques and
+  the ancillary techniques (eg. digital signal processing).
 
   \subsection{SID patch model}
+  A common patch description will be required to describe all possible
+  SID programming methods, whether low or high data rate. This is
+  likely to be a augmented SSF (SID Sound Fragment, see above),
+  represented at various levels of optional precision and resolution
+  (for example optionally dropping frequency changes, to compare SSFs
+  with the same waveform combinations regardless of pitch).
+
+  Tools will be required to translate SSFs into these various forms,
+  including to external synthesis software (so that extracted patches
+  can verified or re-used in existing C64 synthesis software).
 
   \subsection{SID patch difference metrics}
+  With a generic patch model it will be possible to make comparisons
+  in various dimensions, covering cases such as different techniques
+  that achieve similar audio output (perhaps indicative of
+  independent re-invention). As it is possible to generate audio
+  samples from an SSF, it is also possible to ``reverse search'' from
+  provided audio samples back to SSFs.
 
-  \subsection{Visualizing complex and patch dessemination}
+  \subsection{Visualizing complex and patch dissemination}
+  With a patch model and varying difference metrics it will be
+  possible to produce graphical representations. For example, a
+  timeline expressing complexity and introduction of techniques,
+  or a directed graph differentiating more common SSF sub-sequences
+  versus less common.
 
   \subsection{Patch programming classification}
+  The proceeding analysis and visualizations will then support
+  a systematic description of each of the distinct programming
+  techniques identified and a eludication of their propagation
+  over time. Aside from digital synthesis playback such major
+  techniques are anticipated to include ADSR envelope
+  management and single voice combined waveforms.
 
   \subsection{Dessimenation}
 
