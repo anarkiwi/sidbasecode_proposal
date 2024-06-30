@@ -48,10 +48,13 @@
         \end{center}
 
         \begin{abstract}
-          A computational musicological analysis of all known musical
-          performances (from the curated High Voltage SID collection
-          including over 55,000 performances) on the Commodore 64
-          computer platform.  The analysis will identify and attribute
+          A computational musicological analysis of all documented
+          performances on the Commodore 64 computer, incorporating
+          a history of innovation in musical expression and the rise
+          of the international Demoscene (the culture of competitive
+          exploration of constrained computing platforms).
+
+          The analysis will identify and attribute
           innovation in expressive techniques in the form of machine
           language programs that produce unique timbres - metaphorical
           DNA - to composers.
@@ -175,6 +178,19 @@
   original machine code as well.
 
   \subsection{Demoscene}
+  The international Demoscene is a cultural construct, often associated
+  with retrocomputing platforms, where participants regularly and
+  competitively explore and push the envelope of capabilities of obsolete
+  hardware, often to achieve visual or audio effects not anticipated
+  by the original manufacturers. The Demoscene is often organized around
+  particular computing platforms (such as the Commodore 64), and also
+  competitive areas (such as producing performances using as little
+  computer memory as possible). Collaboration between contributors is
+  common and recognition of a contributor or groups' discovery of a new
+  technique is highly prized. While the Demoscene is more a movement
+  that a formal organization, there are more structured Demoparties by
+  various parts of the scene (such as the X party, held annually),
+  associated with cultural gatekeepers.
 
   \subsection{Generative synthesis}
   There is recent work in generative synthesis, for example in
@@ -249,6 +265,9 @@
   call is defined as a 4-tuple:
 
   (T, C, R, V)
+  (T, C, R, V)
+  (T, C, R, V)
+  ...
 
   Where T is the elapsed time in machine cycles (approximately
   microseconds) since the last call was made, C is the SID chip number
@@ -383,6 +402,8 @@
   \section{Preliminary work}
 
   \subsection{Decompilation}
+  Basic tools have been assembled (see above) based on the VICE
+  emulator to provide scope for the research. 
 
   \subsection{Classification models}
 
@@ -393,8 +414,23 @@
   \subsection{Introduction}
 
   \subsection{Reverse engineering/digital archaeology}
+  Attribution and identifying programming technique propagation
+  has applications beyond music; for example in the analysis
+  of malware, both in computer operating systems and
+  supporting infrastructure (such as in BIOS firmware
+  or networking appliances).
 
   \subsection{Demoscene culture}
+  This section will connect the musicological research with
+  the historical development of the Demoscene. Specifically
+  connecting the key contributions whether technological (the introduction
+  of new emulation and programming techniques), but also
+  the formation and evolution of collaborative and competitive social structures.
+
+  As the Demoscene is active today, the research would include
+  a field trip to at least one Demoparty (potentially X2025), to
+  capture experience from current scene and potentially present
+  interim research to the community.
 
   \subsection{Methodology}
 
@@ -436,7 +472,7 @@
   versus less common.
 
   \subsection{Patch programming classification}
-  The proceeding analysis and visualizations will then support
+  The preceding analysis and visualizations will then support
   a systematic description of each of the distinct programming
   techniques identified and a eludication of their propagation
   over time. Aside from digital synthesis playback such major
@@ -444,8 +480,29 @@
   management and single voice combined waveforms.
 
   \subsection{Dessimenation}
+  The entire suite of tools used in the research will be open sourced,
+  and may take different forms depending on reception by the Demoscene
+  community. For example some of the register logging functionality
+  may be integrated with the VICE emulator. It is anticipated though
+  as a matter of practicality that the majority of tools will be open
+  sourced in a small number of repositories with a high level of
+  integration and software testing (so that the tools can be easily
+  maintained and extended on an ongoing basis beyond the research).
+  This open sourcing will facilitate collaboration with Demoscene
+  artists and support criticism and improvement of the attribution
+  techniques.
 
-  \subsection{Tools and datasets}
+  An explicit goal is a collaboration with an artist which may take
+  the form of a partially generative performance, and/or a tool that
+  enables an artist to identify the use of a particular technique in any
+  arbitrary piece of music.
+
+  \subsection{Datasets}
+  Aside from performance opportunities that may arise during the
+  course of the research, the primary dataset to produced (aside from
+  the visualizations described above), together with a tool will
+  be machine learning based and will enumerate the relationships
+  between a given performance and all other known performances.
 
 \section{Novel contributions and conclusions}
 
@@ -455,6 +512,14 @@ Ableton Live set files at scale, attributing innovation in certain
 patch configurations to composers, or to programmatically generate new
 set files with machine learning tools).
 
+It may also be possible to apply the techniques to computer
+security, for example analyzing BIOS calls for stenographic
+activity or the attribution of malware.
+
+Since the Demoscene greatly values reconigition of innovation, tools
+that automatically identify the earliest use of a given technique,
+or even functional equivalence between different techniques may
+be appreciated by the community.
 
 %% \subsection{Formatting}
 
