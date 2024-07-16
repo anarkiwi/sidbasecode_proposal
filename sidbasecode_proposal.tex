@@ -1,4 +1,5 @@
 \documentclass[10pt]{article}
+\usepackage{cite}
 \usepackage[utf8]{inputenc}
 \usepackage{url}
 \usepackage{hyperref}
@@ -10,7 +11,6 @@
 \usepackage{lipsum}
 \usepackage{multicol}
 \usepackage{xcolor}
-\usepackage{natbib}
 \usepackage[font=small]{caption}
 \addtolength{\abovecaptionskip}{-3mm}
 \addtolength{\textfloatsep}{-5mm}
@@ -48,28 +48,29 @@
         \end{center}
 
         \begin{abstract}
-          A computational musicological analysis of all documented
-          performances on the Commodore 64 computer, incorporating
-          a history of innovation in musical expression and the rise
-          of the international Demoscene (the culture of competitive
-          exploration of constrained computing platforms).
-
-          The analysis will identify and attribute
-          innovation in expressive techniques in the form of machine
-          language programs that produce unique timbres - metaphorical
-          DNA - to composers.
+          To undertake a computational musicological analysis of all
+          documented performances on the Commodore 64 computer,
+          incorporating a history of innovation in musical expression
+          and the rise of the international Demoscene (the culture of
+          competitive exploration of constrained computing platforms).
+          The analysis will identify and attribute innovation in
+          expressive techniques in the form of machine language
+          programs that produce unique timbres - metaphorical DNA - to
+          composers.
 
           Contemporary machine learning techniques will be used on
           decompiled Commodore 64 performances (which are realized in
           the form of complete machine language programs). The
           Commodore 64 platform is chosen as it is simple enough to
           make an exhaustive study of performances, while still being
-          sonically capable (including a 3 voice, multiple waveform
-          synthesizer with basic FM and filter features).  The analysis
-          will operate directly on low level synthesizer machine language
-          commands rather than audio samples (both simplifying the
-          analysis while achieving an exact description of musical
-          expression).
+          sonically capable (every Commodore 64 contains a 3 voice,
+          multiple waveform synthesizer with basic FM and filter
+          features).  The analysis will operate directly on low level
+          synthesizer machine language commands rather than audio
+          samples (both simplifying the analysis while achieving an
+          exact description of musical expression microsecond by
+          microsecond, beyond what be expressed with the industry
+          standard MIDI protocol).
 
           As well as enumerating the evolution of musical expression,
           the analysis will produce a dataset and machine learning
@@ -79,6 +80,13 @@
           role of machine learning in composition. The tools and
           concepts may also be transferable to less constrained
           systems in future work.
+
+          The analysis may also enable creative applications such
+          as generative synthesis (for example, evolving a composer
+          provided patch over time) and semi automated composition
+          workflows.  There will be enagement with artists in
+          the Demoscene for both consultantion and possible
+          creative collaboration.
          \end{abstract}
 
         \begin{center}
@@ -91,13 +99,16 @@
 
   \section{Introduction}
   At first glance musicological analysis of Commodore 64 music might
-  appear trivial as the hardware is simple and well documented. Its
-  value as a research platform is the sound hardware's (Sound
-  Interface Device or SID chip) essential resemblance to synthesizers
-  today (multiple voices, waveforms, and filters), combined with a
-  history of expressive innovation arising from its constraints (for
-  example, PCM sample playback despite the hardware not being designed
-  with that capability).
+  appear trivial as the hardware is simple, well documented, and was
+  designed in the late 1970s. Despite this simplicity, the
+  Commodore 64 computer contained an advanced (for the time) synthesizer
+  called the Sound Interface Device or SID chip. This chip has features
+  recognizable in commodity synthesizers today - multiple voices and
+  waveforms, and software controllable filters. Competitive
+  exploration of the chip (and the Commodore 64's) creative capabilities
+  continues today within an international community known as the Demoscene,
+  which prizes innovation within the tight computing contraints. It is this
+  evolution of innovation that is the analysis' primary focus.
 
   SID chip programming involves sequences of changes to memory
   registers at controlled intervals. These sequences are analogous to
@@ -116,27 +127,23 @@
 
   The proposal aims to make a systematic study of all known SID
   programming sequences (as represented in the High Voltage SID
-  Collection), which will include methods for identifying the same or
-  similar programming techniques across all performances. Since the
-  collection includes composer names and dates for most performances,
-  it will be possible to realize an evolutionary timeline of
-  techniques.
+  Collection - see below), which will include methods for identifying
+  the same or similar programming techniques across all
+  performances. Since the HVSC collection includes composer names and dates
+  for most performances, it will be possible to realize an
+  evolutionary timeline of techniques.
 
-  The HVSC collection also contains some performances which have not
-  yet been attributed to a composer. It is proposed to develop tools
-  can analyze these performances (or indeed any new performance) and
-  determine the similarity of the techniques used to other
-  performances (in other words, suggesting a likely composer, or the
-  composers used in the training set of a generative music system).
-
-  Machine learning classification technology will form the basis of
-  the analysis. While the goal of this research is a musicological,
-  inevitably the potential for the same machine learning technology to
-  create performances is realized. The proposal will necessarily
-  engage with this possibility to demonstrate the practicality of
-  identifying the original performances in the tools' training
-  set. The goal is to identify techniques in all performances whether
-  directly from human composers or indirectly via generative tools.
+  Machine learning classification technology is instrumental and will
+  form the basis of the analysis. While the goal of this research is a
+  musicological, inevitably the potential for the same machine
+  learning technology to create performances is realized. The proposal
+  will necessarily engage with this possibility to demonstrate the
+  practicality of identifying the original performances in the tools'
+  training set. The goal is to identify techniques in all performances
+  whether directly from human composers or indirectly via generative
+  tools.  As the machine learning field rapidly advances, throughout
+  the research there will be enagement with the Centre for Data
+  Science and Artificial Intelligence Te Whiri Kawe among others.
 
   \section{Background}
 
@@ -164,7 +171,15 @@
   \subsection{High Voltage SID Collection}
   The High Voltage SID collection is a large, community curated
   collection of SID files including metadata attributing composer
-  and release date, all in a machine readable format.
+  and release date, all in a machine readable format. At the time
+  of writing the collection includes over 58,000 songs.
+
+  The collection also contains some performances which have not
+  yet been attributed to a composer. It is proposed to develop tools
+  can analyze these performances (or indeed any new performance) and
+  determine the similarity of the techniques used to other
+  performances (in other words, suggesting a likely composer, or the
+  composers used in the training set of a generative music system).
 
   \subsection{Machine code and original hardware}
   Given the lack of built in sound software in the Commodore 64, the
@@ -261,20 +276,23 @@
   are changes in state (register modifications) of the SID chip. The
   approach will be to use decompilation tools that intercept all calls
   between a playroutine and an emulated SID chip. A performance can
-  there for be represented as a time ordered list of calls, where each
-  call is defined as a 4-tuple:
+  therefore be represented as a time ordered list of calls, where each
+  call is defined as a 4-tuple. The following table consists of 3 calls.
 
-  (T, C, R, V)
-  (T, C, R, V)
-  (T, C, R, V)
-  ...
-
-  Where T is the elapsed time in machine cycles (approximately
-  microseconds) since the last call was made, C is the SID chip number
-  (if more than one SID chip is used), R is a SID chip memory
-  register, and V is value to put in the register (R and V are both 8
-  bit values, whereas T may range typically range from 1-2 to 10-20
-  thousand.
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \rule[-1ex]{0pt}{2.5ex} Time Diff & Chip No & SID Register & Value \\
+        \rule[-1ex]{0pt}{2.5ex} (cycles) & & (0-28) & (0-255) \\
+        \hline
+        \rule[-1ex]{0pt}{2.5ex} 0 & 0 & 24 & 15 \\
+        \hline
+        \rule[-1ex]{0pt}{2.5ex} 16 & 0 & 0 & 8 \\
+        \hline
+        \rule[-1ex]{0pt}{2.5ex} 8 & 0 & 1 & 1 \\
+        \hline
+        \rule[-1ex]{0pt}{2.5ex} ... & ... & ... & ... \\
+        \hline
+    \end{tabular}
 
   The sequence and content of the calls contain the ``patch''
   information (how a voice is being manipulated - for example
@@ -399,42 +417,7 @@
   The low data rate case is expected to be much more common based
   on HVSC's metadata (see SID file format).
 
-  \section{Preliminary work}
-
-  \subsection{Decompilation}
-  Basic tools have been assembled (see above) based on the VICE
-  emulator to provide scope for the research. 
-
-  \subsection{Classification models}
-
-  \subsection{Generative models}
-
-  \section{Thesis structure}
-
-  \subsection{Introduction}
-
-  \subsection{Reverse engineering/digital archaeology}
-  Attribution and identifying programming technique propagation
-  has applications beyond music; for example in the analysis
-  of malware, both in computer operating systems and
-  supporting infrastructure (such as in BIOS firmware
-  or networking appliances).
-
-  \subsection{Demoscene culture}
-  This section will connect the musicological research with
-  the historical development of the Demoscene. Specifically
-  connecting the key contributions whether technological (the introduction
-  of new emulation and programming techniques), but also
-  the formation and evolution of collaborative and competitive social structures.
-
-  As the Demoscene is active today, the research would include
-  a field trip to at least one Demoparty (potentially X2025), to
-  capture experience from current scene and potentially present
-  interim research to the community.
-
-  \subsection{Methodology}
-
-  \subsection{Evolution of SID sample playback}
+    \subsection{Evolution of SID sample playback}
   While the SID chip was not originally specified to include digital
   sample playback, multiple playback methods have been independently
   discovered. These most simple method is using the volume register
@@ -479,6 +462,64 @@
   techniques are anticipated to include ADSR envelope
   management and single voice combined waveforms.
 
+  \section{Preliminary work}
+
+  \subsection{Decompilation}
+  Basic tools have been assembled (see above) based on the VICE
+  emulator to provide scope for the research, and to inform
+  the initial SSF/sequencing concept.
+
+  \subsection{sidtableflip}
+  An experimental model (sidtableflip) based on the pyTorch framework has been
+  developed, that is capable of probablistic prediction of music based on
+  register logs, in snippets of 30 to 60s. This model exercises the register
+  logging methodology, verifies research platform hardware and software requirements
+  (including a dedicated RTX 4090 GPU), and provides a testing method for future
+  composer and technique identification techniques.
+
+  sidtableflip is based on pyTorch reference text generator's Transformer
+  architecture, with the most significant difference in tokenizing the
+  register log - each unique line in the log is a token. A convention in text
+  generation models is incorporation of punctuation
+  with each word (e.g. assuring "word," and word!" are different tokens with
+  their accompanying context.) Since sidtableflip incorporates the time since the last
+  register change with each change, effectively including the musical "punctuation"
+  in the form of cadence and tempo with each token.
+
+  A 4 layer Transformer with 2 attention heads and 256 embedding dimensions,
+  predicting 2048 call sequences, takes approximately 1 day to train over 64 songs,
+  comprising a sequence 3 million tokens long with approximately 20000 unique tokens.
+
+
+  \section{Thesis structure}
+  The thesis will be arranged as follows, with an approximate time budget. The bulk of the time
+  is anticipated to be spent on the identification of techniques themselves followed by the
+  study of how the techniques have evolved and propagated between artists.
+
+  \begin{tabular}{|l|l|l|}
+        \hline
+        Section & Description & Time budget \\
+        \hline
+        Introduction &  & 5\% \\
+        \hline
+        Demoscene culture & The Demoscene and its connection to innovation. & 5\% \\
+        \hline
+        SID programming & SID hardware and its programming paradigm. & 5\% \\
+        \hline
+        Methodology & Development of tools and process for SID musicology. & 20\% \\
+        \hline
+        Composer techniques & Unique techniques and timbres identified. & 25\% \\
+        \hline
+        Composer identification & Attribution of techniques and their propagation. & 25\% \\
+        \hline
+        Creative applications & Production of a generative work in collaboration with a Demoscene artist.  & 10\% \\
+        \hline
+        Conclusion and future work & Summary of the research and potential for further research. & 2.5\% \\
+        \hline
+        Bibliography/references &  & 2.5\% \\
+        \hline
+  \end{tabular}
+
   \subsection{Dessimenation}
   The entire suite of tools used in the research will be open sourced,
   and may take different forms depending on reception by the Demoscene
@@ -516,45 +557,20 @@ It may also be possible to apply the techniques to computer
 security, for example analyzing BIOS calls for stenographic
 activity or the attribution of malware.
 
-Since the Demoscene greatly values reconigition of innovation, tools
+Since the Demoscene greatly values recognition of innovation, tools
 that automatically identify the earliest use of a given technique,
 or even functional equivalence between different techniques may
 be appreciated by the community.
 
-%% \subsection{Formatting}
+\clearpage
 
-%% All figures and tables that are part of the proposal should fit the page limit. A sample figure is presented in Figure~\ref{fig:fig1}. A sample table that includes how to cite references is presented in Table~\ref{tbl:tbl1}. We do not allow for submission of additional material such as appendices and supplementary materials like data or code.
-
-%% You can use the \texttt{Introduction} section to:
-
-
-\begin{table*}
-        \centering
-        \begin{tabular}{cc}
-                \hline
-                \textbf{Citation format} & \textbf{Citation command} \\
-                \hline
-                \citet{APA:83} & \textbackslash{}citet{} \\
-                \citep{APA:83} & \textbackslash{}citep{} \\
-                \hline
-        \end{tabular}
-        \caption{This is sample table with full page width.}
-        \label{tbl:tbl1}
-\end{table*}
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=\columnwidth]{example-image}
-        \caption{This is a sample figure.}
-        \label{fig:fig1}
-\end{figure}
 
 \end{multicols*}
 
-\clearpage
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{sidbasecode_proposal}
 
-\bibliography{nzsm-phd-proposal}
-\bibliographystyle{plainnat}
 
 \end{document}
 
