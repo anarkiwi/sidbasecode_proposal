@@ -90,15 +90,15 @@ It is necessary to describe in greater detail the main research themes in the in
 
 This research focuses on the technological boundary between these two fields, in not only how the community has expressed its creativity using Commodore 64 as an instrument, but also how that creativity has assumed new forms (and new complexity) over time. Since the Commodore 64 is a computer, this research also studies in effect the creation and innovation of computer programming techniques towards a specific application (creative musical works), using specific sound producing hardware within the Commodore 64 computer (the SID chip).
 
-It is necessary to contrast Commodore 64 with other platforms of the period by describing its relative strength in expressive features and its potential for future exploration. It is also necessary to discuss the degree of intersection between the field of machine learning and this research.
+It is necessary to contrast the Commodore 64 with other platforms of the period by describing its relative strength in expressive features and its potential for future exploration. It is also necessary to discuss the degree of intersection between the field of machine learning and this research.
 
 Following this background, the Methodology section will describe precisely how Commodore 64 musicians realize their creativity on the platform, and techniques for quantifying that expression of creativity and how it has evolved and transferred. The Preliminary Work section includes a precise example of how creativity can be described, visualized and demonstrated to rapidly increase over time using those research techniques, and suggests a direction and final form for research findings and potential accompanying creative works.
 
 \subsection{Demoscene Ethnography}
 
-The Demoscene is an ongoing subject of ethnographic research, including the intersection with communities including computer graphics (Schieb et al., 2002) and information security (LayerOne Security, 2024). The Demoscene has accompanied and informed the emergence of critical, networked culture with its beginnings in early pre-Internet personal computing (Carlsson, 2009), with expansive attitudes towards exploration and information sharing and challenging conventional copyright restrictions.
+The Demoscene is an ongoing subject of ethnographic research, including the intersection with communities including computer graphics (Schieb et al., 2002) and information security (LayerOne Security, 2024). The Demoscene has accompanied and informed the emergence of critical, networked culture with its beginnings in early pre-Internet personal computing\cite{pioneers}, with expansive attitudes towards exploration and information sharing and challenging conventional copyright restrictions.
 
-The Demoscene is also characterized in part by cultural gatekeepers with implicit rules for entry (Impagliazzo et al., 2009, 299), either individually or through Demoparties, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born, which realizes a 4 minute audiovisual performance in 256 bytes of code (Åkesson, 2017).
+The Demoscene is also characterized in part by cultural gatekeepers with implicit rules for entry (Impagliazzo et al., 2009, 299), either individually or through Demoparties, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born, which realizes a 4 minute audiovisual performance in 256 bytes of code\cite{amib}.
 
 \subsection{High Voltage SID Collection}
 
@@ -271,7 +271,7 @@ Basic tools have been assembled (see above) based on the VICE emulator (Bailey, 
 
 \subsection{sidtableflip}
 
-An experimental model named sidtableflip (Bailey, 2024),  based on the pyTorch framework, has been developed. This model is capable of probabilistic prediction of music based on register logs, in snippets of 30 to 60s. This model exercises the register logging methodology, verifies research platform hardware and software requirements (including a dedicated RTX 4090 GPU), and provides a testing method for future composer and technique identification techniques as well as potential generative creative works.
+An experimental model named sidtableflip\cite{sidtableflip}, based on the pyTorch framework, has been developed. This model is capable of probabilistic prediction of music based on register logs, in snippets of 30 to 60s. This model exercises the register logging methodology, verifies research platform hardware and software requirements (including a dedicated RTX 4090 GPU), and provides a testing method for future composer and technique identification techniques as well as potential generative creative works.
 
 sidtableflip is based on pyTorch reference text generator’s Transformer architecture (Zhang, 2019), with the most significant difference in tokenizing the register log - each unique register assignment in the log is a token. A convention in text generation models is incorporation of punctuation with each word (e.g. assuring ”word,” and word!” are different tokens with their accompanying context.)
 
