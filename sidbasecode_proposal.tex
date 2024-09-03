@@ -121,7 +121,7 @@ While several software and hardware emulations of the SID chip exist, the behavi
 
 \subsection{Generative synthesis}
 
-Recent work in generative synthesis (Devis, 2021) involves machine learning prediction of audio samples and demonstrates the creative use of patch parameter prediction. A potential research outcome therefore may be a SID generative synthesizer tool that permutes initial SID register state in a creative direction guided by a composer (for example, altering a snare drum patch over time).
+Recent work in generative synthesis\cite{neurorack} involves machine learning prediction of audio samples and demonstrates the creative use of patch parameter prediction. A potential research outcome therefore may be a SID generative synthesizer tool that permutes initial SID register state in a creative direction guided by a composer (for example, altering a snare drum patch over time).
 
 \subsection{Machine learning}
 
@@ -129,7 +129,7 @@ The field of machine learning has made rapid advances in the past few years, esp
 
 There was informal consultation with artists, machine learning content engineers, and the Centre of Data Science and Artificial Intelligence Te Whiri Kawe in the preparation of this proposal.
 
-Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent (Morreale et al., 2023), but also an openness to the possibility of new creative tools enabled by the technology (Esling Devis, 2020). The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content (Future of Life Institute, 2024), and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) highlighted the significant responsibilities the proposed regulation has on their industry (US Department of Commerce, 2023).
+Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent (Morreale et al., 2023), but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content (Future of Life Institute, 2024), and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) highlighted the significant responsibilities the proposed regulation has on their industry (US Department of Commerce, 2023).
 
 The practicality of an open source generative model and its use in the detection of model produced music was also explored (see below). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level, without an obvious means of separation being dependent on the same underlying pyTorch code.
 
