@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
-      - name: pdflatex main
+      - name: pdflatex0
         uses: dante-ev/latex-action@latest
         with:
           root_file: sidbasecode_proposal.tex
@@ -19,7 +19,13 @@ jobs:
           root_file: sidbasecode_proposal.aux
           compiler: bibtex
           args: 
-      - name: pdflatex main
+      - name: pdflatex1
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: sidbasecode_proposal.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: pdflatex2
         uses: dante-ev/latex-action@latest
         with:
           root_file: sidbasecode_proposal.tex
