@@ -15,6 +15,7 @@
 \addtolength{\abovecaptionskip}{-3mm}
 \addtolength{\textfloatsep}{-5mm}
 \setlength\columnsep{20pt}
+\graphicspath{ {images/} }
 
 \usepackage[a4paper,left=1.50cm, right=1.50cm, top=1.50cm, bottom=1.50cm]{geometry}
 
@@ -99,7 +100,7 @@ Following this background, the Methodology section will describe precisely how C
 
 The Demoscene is an ongoing subject of ethnographic research, including the intersection with communities including computer graphics\cite{siggraphdemo} and information security\cite{layerone}. The Demoscene has accompanied and informed the emergence of critical, networked culture with its beginnings in early pre-Internet personal computing\cite{pioneers}, with expansive attitudes towards exploration and information sharing and challenging conventional copyright restrictions.
 
-The Demoscene is also characterized in part by cultural gatekeepers with implicit rules for entry (Impagliazzo et al., 2009, 299), either individually or through Demoparties, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born\cite{amib}, which realizes a 4 minute audiovisual performance in 256 bytes of code.
+The Demoscene is also characterized in part by cultural gatekeepers with implicit rules for entry\cite{gatekeepers}, either individually or through Demoparties, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born\cite{amib}, which realizes a 4 minute audiovisual performance in 256 bytes of code.
 
 \subsection{High Voltage SID Collection}
 
@@ -149,7 +150,7 @@ To perform systematic analysis of all SID programming techniques in the HVSC it 
 
 As raw DNA, the HVSC includes metadata with each performance, including composer names and release dates (where known), and some advisory metadata for a SID player program about how to play the performance, packaged together as a SID file\cite{sidfile}. These metadata include what model of SID chip(s) to use, whether to use timer based playback (see below) etc. A SID file therefore is a complete machine language program that produces sound when played.
 
-In summary the overall methodology will be to understand the structure of all SID files in the HVSC, create tools that parse the files and understand their differences, including understanding the effect of specific sequences of machine language instructions on audio output. While there are existing tools (Youd, 2020) to parse the files, they do not perform such analysis
+In summary the overall methodology will be to understand the structure of all SID files in the HVSC, create tools that parse the files and understand their differences, including understanding the effect of specific sequences of machine language instructions on audio output. 
 
 Once the differences are understood, another tool set will be used to generate visualizations that show evolution of techniques over time and the transfer or coincidental invention techniques among composers. While there are existing tools\cite{ChiptuneSAK} to parse the files, they do not perform such analysis. Informal collaboration with Demoscene artists will be maintained throughout to ensure the research is calibrated against the community’s understanding of techniques and subject to their critical review. These undertakings will make up the bulk of the proposed thesis structure, enumerated below in Chapter 5: Thesis Structure.
 
@@ -285,6 +286,21 @@ A preliminary analysis has been performed year by year, to show the overall incr
 In the very early years, state transition complexity is quite low and easy to visualize as the number of performances produced is small and composers have not yet explored all possibilities. Complexity very rapidly increases over the next few years. The following diagrams represent all performances produced in the years 1982, 1983, and 1984, and while not the final research product are illustrative (the size of the connection between states is proportional to how often that state transition is used).
 
 The research will explore this more deeply with tools that can selectively focus on different types and sources of complexity (for example, show how a given composer’s technique has evolved over time, and/or how the set or related techniques have evolved, such as combining selected waveforms). This may support a kind of visual complexity notation.
+
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth]{1982}
+\caption{1982}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth]{1983}
+\caption{1983}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth]{1984}
+\caption{1984}
+\end{figure}
 
 \subsection{Preliminary work summary}
 
