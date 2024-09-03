@@ -54,8 +54,9 @@ for i, zst in enumerate(zsts):
             edges[edge_pair] += count
 
 total = sum(edges.values())
+label = label=f"{year}: {len(edges)} unique transitions"
 graph = pydot.Dot(
-    graph_type="digraph", label=f"{year}: {len(edges)} unique transitions"
+    graph_type="digraph", # label=f"{year}: {len(edges)} unique transitions"
 )
 nodes = {}
 for i, node_pair_count in enumerate(
