@@ -121,11 +121,13 @@ This level of detail is necessary because notation intended for human musicians 
 
 The proposed tools need to blur the line between conventional score (instructions for a musician) versus computer software (very precise instructions to a computer as musician to produce sound) and expand the scope of study to include very fine details (analogous to the precise handling of the strings of a violin a musician might add as their own personal stylistic expression).
 
-\subsection{Machine code and original hardware}
+\subsection{Machine code and original SID hardware}
 
-Given the lack of built in sound software in the Commodore 64, the SID chip can only be fully utilized with 6502 machine code\cite{c64digi}, and the chip exhibits significant performance differences (see following) even within units of the same model number and revision.
+Given the lack of built in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}, and the chip exhibits significant performance differences (see following) even within units of the same model number and revision.
 
 While several software and hardware emulations of the SID chip exist, the behavior of the original hardware has proven difficult to reproduce exactly and emulator defects continue to be discovered particularly in advanced configurations such as combined waveforms\cite{fixcombwaveforms}. Therefore analysis must include not only methods to work with original hardware, but original machine code as well.
+
+As described in the SID patent\cite{sidpatent}, the SID implements three voices each of which has pulse, sawtooth, triangle and noise waveforms (from an internal pseudo random generator), and low, band and high pass filters. Waveforms may be selected in combination and voices may or may not be routed to an active filter. There is a 4 bit volume register affecting all the voices.
 
 \subsection{Generative synthesis}
 
@@ -139,24 +141,17 @@ Several existing tools and approaches in the fields of reverse engineering and a
 
 The field of software reverse engineering is extremely active, especially in security applications, for example in malware analysis and mitigation and attribution to criminal or state actors \cite{mohammed2022malgridvisualizationbinaryfeatures}. There are techniques such as styleometry\cite{10.1145/3292577} that identify software features that are characteristic of authors. These techniques may require source code to be available, and so tools such as NSA's Ghidra\cite{ghidra} are available that turn machine code into pseudo source code that is easier for programmers to analyze and for other tools to work with. Ghidra in particular is capable of parsing Commodore 64 machine code.
 
-
 \subsection{Machine learning}
 
 There was informal consultation with artists, machine learning content engineers, and the Centre of Data Science and Artificial Intelligence Te Whiri Kawe in the preparation of this proposal.
 
-The field of machine learning continues to rapidly advance especially in generative systems. There is every reason to expect conitnued rapid advances and increased accessibility to artists and the general public, new cultural concerns, and regulatory oversight.
+The field of machine learning continues to rapidly advance especially in generative systems. There is every reason to expect continued rapid advances and increased accessibility to artists and the general public, new cultural concerns, and regulatory oversight.
 
-Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent\cite{datacollect}, but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content\cite{euairegs}, and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) in the US are guided by the NIST risk management framework\cite{nistai}, which may inform future regulation. The music rights management orgnization APRA AMCOS NZ recently reported its membership's concerns with machine learning and calls for regulation\cite{aprastory}.
+Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent\cite{datacollect}, but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content\cite{euairegs}, and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) in the US are guided by the NIST risk management framework\cite{nistai}, which may inform future regulation. The music rights management organization APRA AMCOS NZ recently reported its membership's concerns with machine learning and calls for regulation\cite{aprastory}.
 
-The practicality of an open source generative model and its use in the detection of model produced music was also explored (see sidtableflip\ref{sidtableflip}). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level, without an obvious means of separation being dependent on the same underlying pyTorch code.
+The practicality of an open source generative model and its use in the detection of model produced music was also explored (see sidtableflip\ref{sidtableflip}). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level.
 
 These capabilities represent research challenges, partly in accommodating rapid advances (which can be managed by relying on standard industry frameworks), but potentially most importantly by evolving regulation. It can be foreseen that a research or non-commercial open source generative model could be exploited in ways not practical to constrain. This would make it potentially subject not just to philosophical concerns but regulatory ones.
-
-While machine learning research tools have fewer regulatory restraints and may be considered low or limited risk in some creative contexts, given the rapid development of the machine learning field in general (particularly powerful and accessible machine learning frameworks such as pyTorch and TensorFlow), it will become more challenging to delineate research from non-research machine learning tools due to significant shared technical infrastructure. There is also historical precedent of regulation of the export of encryption and other signal processing techniques such as passive radar\cite{munitions}, where research exemptions may not be permitted. These precedents and clear calls for regulation introduce liability concerns for machine learning engineers as well as artists.
-
-Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A non-machine learning, conventionally algorithmic tool set will be used as described in Methodology.
-
-However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
 
 \section{Methodology}
 \label{methodology}
@@ -206,14 +201,6 @@ The sequence and content of the calls contain the “patch” information (how a
     \label{table:examplelog}
 \end{table*}
 
-\subsection{Voice 3 feedback}
-
-The register log depends upon the SID chip being programmed as a write-only device, where the order of changes is significant, but the performance is not directly aware of the SID chip’s audio output in real time.
-
-However, unlike the other voices, voice 3’s accumulator state can be read from a dedicated 16 bit register. This allows a playroutine to use this state as part of further signal processing or synthesis techniques. For example, this state could be entered into a delay line or queue, and translated into a 4 bit digital sample to be played back via the volume register as delay effect.
-
-It will therefore be necessary to include voice 3’s accumulator state in the register log (see above), along with an additional field indicating if and where the machine code has inspected this state, to enable further analysis of this technique.
-
 \subsection{VICE emulator logging modifications}
 
 The VICE emulator provides a debugging “dump” function that produces logs in the above format, except for the chip number (VICE is modified to add this). The output is post processed to remove redundant state (see below). It will also be necessary to add voice 3 state as above.
@@ -230,12 +217,6 @@ It follows also that there may be sequences that produce no change in audio outp
 
 Depending on the machine code making the SID register calls, there may be variation in the time taken between individual items in a sequence (for example, one playroutine might take longer to calculate a new frequency value than another using a different algorithm, even though both playroutines end up calculating the same value). This difference may or may not be audible. A threshold will have to be defined (for example, if SID register changes are accomplished within one audio sample time at 44.1kHz no difference would be observed). Nonetheless, verification of the significance (or non significance) of small differences in timing between the same register calls will be required.
 
-\subsection{Voice multiplexing}
-
-The SID chip has 3 voices, which can be configured in pairs for some FM effects. A given voice may only be paired with a fixed choice of one other (for example, voices 1 and 3 are paired). Due to the very small number of voices available, composers made extensive use of multiplexing, for example executing a percussion sound sequence on voice 1, then executing a simple pulse wave on voice 1 while executing the same percussion sound sequence on voice 2. It is assumed that all single voices are interchangeable, and that all voice pairs are interchangeable, assumptions that must be verified.
-
-Aside from the voices, the SID chip has programmable filters and a 4 bit volume register. All voices are affected by the volume register and can be selectively routed to the filters. There is therefore another kind of sequence state to be considered: individual voice states paired with a specific filter and volume state. These combinations must be modeled for comparison.
-
 \subsection{ADSR envelope bugs}
 
 One of the SID chip’s most documented flaws is a non deterministic ADSR envelope. Composer management of this significant hardware flaw is a specific but not exclusive example of a kind of expression to be studied throughout the research. How the envelope operates upon triggering depends upon its state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state. This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model.
@@ -243,6 +224,12 @@ One of the SID chip’s most documented flaws is a non deterministic ADSR envelo
 \subsection{Evolution of SID sample playback}
 
 While the SID chip was not originally specified to include digital sample playback, multiple playback methods have been independently discovered. The most simple method is using the volume register as a 4 bit DAC, while the more complex methods involve using multiple voices together to produce higher resolution waveforms (sometimes in combination with the volume register). As a thesis research outcome, a section with a a detailed analysis of the techniques and the ancillary techniques (e.g. digital signal processing) will be included.
+
+\subsection{Voice multiplexing}
+
+The SID chip's 3 voices can be configured in pairs for some FM effects. A given voice may only be paired with a fixed choice of one other (for example, voices 1 and 3 are paired). Due to the very small number of voices available, composers made extensive use of multiplexing, for example executing a percussion sound sequence on voice 1, then executing a simple pulse wave on voice 1 while executing the same percussion sound sequence on voice 2. It is assumed that all single voices are interchangeable, and that all voice pairs are interchangeable, assumptions that must be verified.
+
+All voices are affected by the volume register and can be selectively routed to the filters. There is therefore another kind of sequence state to be considered: individual voice states paired with a specific filter and volume state. These combinations must be modeled for comparison.
 
 \subsection{High/low data rate}
 
@@ -252,6 +239,11 @@ The high data rate case is expected to be indicative of very specific synthesis 
 
 \subsection{SID Sound Fragment}
 \label{ssf}
+
+\begin{figure}[H]
+\includegraphics[width=0.5\textwidth]{ssf}
+\caption{SSF envelope}
+\end{figure}
 
 Given the SID has an envelope per voice, a convenient way to model a patch is from the envelope being triggered (when the GATE bit is set to 1). This distinguishes a new window (potentially encompassing many other SID writes, for example changing frequencies or waveforms) from a preceding window. This window can be described as a SID Sound Fragment. A SSF must include all information that could influence the output of a voice (including its FM paired voice, and filters). A SSF is essentially a DNA fragment, and is a set of register change entries that describe a patch that might be found in any given piece of music.
 
@@ -288,9 +280,17 @@ In the development of this proposal some rudimentary tools have been developed (
 
 The tools and concepts discussed in Methodology were developed and applied to the High Voltage SID collection as discussed below. The goal of the preliminary work was to informally gauge artistic interest and value of the research and obtain a high level understanding of complexity of performances (specifically, whether the level of complexity was sufficient to research).
 
+\subsection{Application of machine learning}
+
+While machine learning research tools have fewer regulatory restraints and may be considered low or limited risk in some creative contexts, given the rapid development of the machine learning field in general (particularly powerful and accessible machine learning frameworks such as pyTorch and TensorFlow), it will become more challenging to delineate research from non-research machine learning tools due to significant shared technical infrastructure. There is also historical precedent of regulation of the export of encryption and other signal processing techniques such as passive radar\cite{munitions}, where research exemptions may not be permitted. These precedents and clear calls for regulation introduce liability concerns for machine learning engineers as well as artists.
+
+Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A non-machine learning, conventionally algorithmic approach is described following.
+
+However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
+
 \subsection{Decompilation}
 
-Basic tools that implement register logging\ref{reglog} on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were writtento facilitate the following.
+Basic tools that implement register logging\ref{reglog} on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate the following.
 
 \subsection{sidtableflip}
 \label{sidtableflip}
