@@ -51,7 +51,7 @@
        \begin{abstract}
 Constraints have long been the drivers of creativity and innovation, as reputedly stated by Ernest Rutherford - “we haven’t the money, so we’ve got to think”\cite{think}.  Just as in physics, constraints (financial, technical and otherwise) have driven innovation in electronic music, such as with the invention of the acid bass genre based upon the modest capabilities of the Roland TB-303 synthesizer\cite{acidpatterns}.
 
-The Commodore 64 introduced in the early 1980’s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer through creative competition within an informal international community known as the Demoscene, which continues to this day.
+The Commodore 64 introduced in the early 1980’s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer. This challenge continues to be answered today through creative, ongoing competitions within an informal international community known as the Demoscene.
 
 This research proposes to document, visualize and attribute to composers innovation in Commodore 64 based music using purpose built computational musicological tools and techniques. Music on the Commodore 64 is realized in the form of low level machine code due to the limitations of the platform, so is a form of software, and metaphorically similar to DNA in that it can be recombined, shared, and compared over time to understand the evolutionary aspect of innovation.
 
@@ -70,37 +70,34 @@ The research will use a community curated collection of Commodore 64 music known
 
   At first glance, musicological analysis of music on the reputedly best selling computer of all time, the Commodore 64\cite{ieeec64} might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. The chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters.
 
-  The chip was also integrated into Elektron’s first commercial product, the SIDStation\cite{sidstation}. The SIDStation made SID programming much more accessible to musicians allowing patches to be programmed and sequenced via MIDI, which would otherwise involve writing 6502 machine code. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
+  The chip was also integrated into Elektron’s first commercial product, the SIDStation\cite{sidstation}.  The SIDStation made SID programming much more accessible to musicians allowing patches (a patch being proprietary configuration describing how to produce a certain sound) to be programmed and sequenced via the MIDI protocol from other industry standard music hardware and software. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
 
-SID chip programming on the original Commodore 64 involves carefully constructed sequences of changes to memory registers at carefully chosen intervals. These sequences are analogous to DNA - a given performance will include sequences programmed by a composer, either of their own invention (including re-sequencing from another performance that might use similar patches), or sequences recovered from the work of others.
+SID chip programming on the original Commodore 64 involves carefully constructed sequences of changes to memory registers at carefully chosen intervals, which in many cases requires writing machine code for the Commodore 64's rudimentary (by contemporary standards) 6502-based CPU. These sequences are analogous to DNA - a given performance will include sequences programmed by a composer, either of their own invention (including re-sequencing from another performance that might use similar patches), or sequences recovered from the work of others.
 
 These “DNA” sequences can then be indexed across documented performances, allowing for variation (both variations that produce the same audio output, and variations that produce slightly or vastly different output depending on the precise order in which they are executed). As with DNA, these sequences can be recombined and edited to produce new sequences, compared with other sequences. The effect of changes to a sequence can be determined by executing it on a real or emulated SID and comparing the resulting audio.
 
-The research aims to make a systematic study of all known SID programming sequences (as represented in the High Voltage SID Collection\cite{hvsc} further introduced in Background, High Voltage SID Collection), which will include methods for identifying the same or similar programming techniques across all performances. Since the HVSC collection includes composer names and dates for most performances, it will be possible to realize an evolutionary timeline of techniques (so far as the community provided metadata allow).
-
-One of the conventional approaches to the musicological study of a given genre or set of composers of music, is score analysis. This is a set of techniques for studying written forms of music, representing instructions for musicians to reproduce and interpret a composer’s intentions (for example what range of notes to use and with what cadence). Music21\cite{music21} is a set of tools that enable such high level score analysis and comparison of composition features such as key transitions and beat signatures. The proposed research will go beyond these features and produce new tools that operate at a patch/waveform/microsecond level rather than a MIDI note/bar/measure level.
-
-This level of detail is necessary because the MIDI standard does not define patch parameters such as waveform or FM algorithm, and MIDI-based tools such as Music21, ChiptuneSAK\cite{ChiptuneSAK} or Magenta\cite{Magenta} cannot achieve the level of detail required to capture audio sample level expression. The musicological line between a conventional score (instructions for a musician) versus computer software (very precise instructions to a computer as musician to produce sound) is blurred, but the scope of study is expanded to include very fine details (analogous to the precise handling of the strings of a violin a musician might add as personal expression, beyond what might be written on the score before them).
+The research will make systematic study of all known SID programming sequences (as represented in the High Voltage SID Collection\cite{hvsc} further introduced below\ref{hvsc}, which will include methods for identifying the same or similar programming techniques across all performances. Since the HVSC collection includes composer names and dates for most performances, it will be possible to realize an evolutionary timeline of techniques (so far as the community provided metadata allow).
 
   \section{Background}
 
   \subsection{Overview}
 
-It is necessary to describe in greater detail the main research themes in the introduction - the Demoscene community and its values, the Commodore 64 as an instrument and its surprising complexity, and the proposed approach to studying the practice of musical performance and composition within the Demoscene community and on the Commodore 64 specifically. The Demoscene itself as a social phenomenon continues to be studied, as does the Commodore 64 itself.
+This section develops the  the Demoscene community and its values, the Commodore 64 as an instrument and its surprising complexity, and the proposed approach to studying the practice of musical performance and composition within the Demoscene community and on the Commodore 64 specifically. The Demoscene itself as a cultural phenomenon continues to be studied, as does the Commodore 64 itself.
 
 This research focuses on the technological boundary between these two fields, in not only how the community has expressed its creativity using Commodore 64 as an instrument, but also how that creativity has assumed new forms (and new complexity) over time. Since the Commodore 64 is a computer, this research also studies in effect the creation and innovation of computer programming techniques towards a specific application (creative musical works), using specific sound producing hardware within the Commodore 64 computer (the SID chip).
 
 It is also necessary to contrast the Commodore 64 with other platforms of the period by describing its relative strength in expressive features and its potential for future exploration and to discuss the degree of intersection between the field of machine learning and this research.
 
-Following this background, the Methodology section will describe precisely how Commodore 64 musicians realize their creativity on the platform, and techniques for quantifying that expression of creativity and how it has evolved and transferred. The Preliminary Work section includes a precise example of how creativity can be described, visualized and demonstrated to rapidly increase over time using those research techniques, and suggests a direction and final form for research findings and potential accompanying creative works.
+Following this background, the Methodology\ref{methodology} section will describe precisely how Commodore 64 musicians realize their creativity on the platform, and techniques for quantifying that expression of creativity and how it has evolved and transferred. The Preliminary Work\ref{prelim} section includes a precise example of how creativity can be described, visualized and demonstrated to rapidly increase over time using those research techniques, and suggests a direction and final form for research findings and potential accompanying creative works.
 
-\subsection{Demoscene Ethnography}
+\subsection{Demoscene}
 
-The Demoscene is an ongoing subject of ethnographic research, including the intersection with communities including computer graphics\cite{siggraphdemo} and information security\cite{layerone}. The Demoscene has accompanied and informed the emergence of critical, networked culture with its beginnings in early pre-Internet personal computing\cite{pioneers}, with expansive attitudes towards exploration and information sharing and challenging conventional copyright restrictions.
+The Demoscene transcends music and is a cultural phenomenon of its own\cite{hackingpractices}, including themes of artistic and technical creativity, and has intersections with other communities including computer graphics\cite{siggraphdemo} and information security\cite{layerone}. The Demoscene has accompanied and informed the emergence of critical, networked culture with its beginnings in early pre-Internet personal computing\cite{pioneers}, with expansive attitudes towards exploration and information sharing and challenging conventional copyright restrictions.
 
-The Demoscene is also characterized in part by cultural gatekeepers with implicit rules for entry\cite{gatekeepers}, either individually or through Demoparties, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born\cite{amib}, which realizes a 4 minute audiovisual performance in 256 bytes of code.
+Demoscene culture is also characterized in part by cultural gatekeepers with implicit rules for entry\cite{gatekeepers}, either individually or through Demoparties\cite{assembly}, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born\cite{amib}, which realizes a 4 minute audiovisual performance in 256 bytes of code.
 
 \subsection{High Voltage SID Collection}
+\label{hvsc}
 
 One way the Demoscene expresses and curates its creative works is through community collections such as the High Voltage SID Collection\cite{hvsc}. This collection represents the perfect subject of creative study because it includes not only the complete creative works themselves but the metadata attributing composer and release date, all in a machine readable format. At the time of writing the collection (version 81) includes over 58,000 songs. The collection also contains some performances which have not yet been attributed to a composer (an explicit research goal is to attribute these performances).
 
@@ -112,7 +109,17 @@ The Commodore 64 is not the only platform of the period, but is chosen because i
 
 For example, a competing platform of the period was the ZX Spectrum\cite{attrclash}. This system had only a built in “beeper” speaker with no filters or additional waveforms (though additional hardware was available adding, among other features, FM synthesis).
 
-The NES (Nintendo Entertainment system)platform, like the SID chip, had multiple waveforms and voices, but no filters, though has been the subject of some musicological research\cite{nesmusic}. For these reasons expressive complexity on these other platforms is limited and so they are not part of proposed research.
+The NES (Nintendo Entertainment system) platform, like the SID chip, had multiple waveforms and voices, but no filters, though has been the subject of some musicological research\cite{nesmusic}.
+
+For these reasons expressive complexity on these other platforms is more limited and so they are not part of proposed research.
+
+\subsection{Musicology tools}
+
+There are existing tools for musicological analysis such as Music21\cite{music21} which enables high level score analysis and comparison of composition features such as key transitions and beat signatures. The proposed research goes beyond this level of detail to focus on expression, and will produce new tools that operate at a patch/waveform/microsecond level rather than a more human-centric note/bar/measure level.
+
+This level of detail is necessary because notation intended for human musicians does not define patch parameters such as waveform or FM algorithm, and MIDI-based tools such as Music21, ChiptuneSAK\cite{ChiptuneSAK} or Magenta\cite{Magenta} cannot achieve the level of detail required to capture audio sample level expression.
+
+The proposed tools need to blur the line between conventional score (instructions for a musician) versus computer software (very precise instructions to a computer as musician to produce sound) and expand the scope of study to include very fine details (analogous to the precise handling of the strings of a violin a musician might add as their own personal stylistic expression).
 
 \subsection{Machine code and original hardware}
 
@@ -122,27 +129,37 @@ While several software and hardware emulations of the SID chip exist, the behavi
 
 \subsection{Generative synthesis}
 
-Recent work in generative synthesis\cite{neurorack} involves machine learning prediction of audio samples and demonstrates the creative use of patch parameter prediction. A potential research outcome therefore may be a SID generative synthesizer tool that permutes initial SID register state in a creative direction guided by a composer (for example, altering a snare drum patch over time).
+There are current examples of generative synthesis tools (where new patches are created or combined from existing patches). Two examples that work on Yamaha DX7 patches are NeuroDX7\cite{neurodx7} and DeepDX\cite{deepdx}, which read existing patches and generate new ones on demand. Another example is Neurorack\cite{neurorack} which generates audio directly in a modular synthesis context.
+
+A potential research outcome therefore may be a SID generative synthesis tool that permutes initial SID register state in a creative direction guided by a composer (for example, altering a snare drum patch over time), or permutes a Commodore 64 machine code program in real time that in turn produces sound.
+
+\subsection{Reverse engineering and authorship attribution}
+
+Several existing tools and approaches in the fields of reverse engineering and authorship attribution have been instrumental in establishing the practicality of this proposal's methodology.
+
+The field of software reverse engineering is extremely active, especially in security applications, for example in malware analysis and mitigation and attribution to criminal or state actors \cite{mohammed2022malgridvisualizationbinaryfeatures}. There are techniques such as styleometry\cite{10.1145/3292577} that identify software features that are characteristic of authors. These techniques may require source code to be available, and so tools such as NSA's Ghidra\cite{ghidra} are available that turn machine code into pseudo source code that is easier for programmers to analyze and for other tools to work with. Ghidra in particular is capable of parsing Commodore 64 machine code.
+
 
 \subsection{Machine learning}
 
-The field of machine learning has made rapid advances in the past few years, especially in generative systems. There is every reason to expect continued rapid advances, increased accessibility to artists and the general public, new cultural concerns, and regulatory oversight.
-
 There was informal consultation with artists, machine learning content engineers, and the Centre of Data Science and Artificial Intelligence Te Whiri Kawe in the preparation of this proposal.
 
-Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent\cite{datacollect}, but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content\cite{euairegs}, and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) highlighted the significant responsibilities the proposed regulation has on their industry\cite{nistai}.
+The field of machine learning continues to rapidly advance especially in generative systems. There is every reason to expect conitnued rapid advances and increased accessibility to artists and the general public, new cultural concerns, and regulatory oversight.
 
-The practicality of an open source generative model and its use in the detection of model produced music was also explored (see below). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level, without an obvious means of separation being dependent on the same underlying pyTorch code.
+Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent\cite{datacollect}, but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content\cite{euairegs}, and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) in the US are guided by the NIST risk management framework\cite{nistai}, which may inform future regulation. The music rights management orgnization APRA AMCOS NZ recently reported its membership's concerns with machine learning and calls for regulation\cite{aprastory}.
+
+The practicality of an open source generative model and its use in the detection of model produced music was also explored (see sidtableflip\ref{sidtableflip}). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level, without an obvious means of separation being dependent on the same underlying pyTorch code.
 
 These capabilities represent research challenges, partly in accommodating rapid advances (which can be managed by relying on standard industry frameworks), but potentially most importantly by evolving regulation. It can be foreseen that a research or non-commercial open source generative model could be exploited in ways not practical to constrain. This would make it potentially subject not just to philosophical concerns but regulatory ones.
 
-While machine learning research tools have fewer regulatory restraints and may be considered low or limited risk in some creative contexts, given the rapid development of the machine learning field in general (particularly powerful and accessible machine learning frameworks such as pyTorch and TensorFlow), it will become more challenging to delineate research from non-research machine learning tools due to significant shared technical infrastructure. There is also historical precedent of regulation of the export of encryption and other signal processing techniques such as passive radar\cite{munitions}, where research exemptions may not be permitted.
+While machine learning research tools have fewer regulatory restraints and may be considered low or limited risk in some creative contexts, given the rapid development of the machine learning field in general (particularly powerful and accessible machine learning frameworks such as pyTorch and TensorFlow), it will become more challenging to delineate research from non-research machine learning tools due to significant shared technical infrastructure. There is also historical precedent of regulation of the export of encryption and other signal processing techniques such as passive radar\cite{munitions}, where research exemptions may not be permitted. These precedents and clear calls for regulation introduce liability concerns for machine learning engineers as well as artists.
 
 Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A non-machine learning, conventionally algorithmic tool set will be used as described in Methodology.
 
 However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
 
-  \section{Methodology}
+\section{Methodology}
+\label{methodology}
 
     \subsection{Overview}
 
@@ -150,23 +167,27 @@ To perform systematic analysis of all SID programming techniques in the HVSC it 
 
 As raw DNA, the HVSC includes metadata with each performance, including composer names and release dates (where known), and some advisory metadata for a SID player program about how to play the performance, packaged together as a SID file\cite{sidfile}. These metadata include what model of SID chip(s) to use, whether to use timer based playback (see below) etc. A SID file therefore is a complete machine language program that produces sound when played.
 
-In summary the overall methodology will be to understand the structure of all SID files in the HVSC, create tools that parse the files and understand their differences, including understanding the effect of specific sequences of machine language instructions on audio output.
+In summary the overall first stage of the research will be to understand the structure of all SID files in the HVSC, create tools that parse the files and understand their differences, including understanding the effect of specific sequences of machine language instructions on audio output.
 
-Once the differences are understood, another tool set will be used to generate visualizations that show evolution of techniques over time and the transfer or coincidental invention techniques among composers. While there are existing tools\cite{ChiptuneSAK} to parse the files, they do not perform such analysis. Informal collaboration with Demoscene artists will be maintained throughout to ensure the research is calibrated against the community’s understanding of techniques and subject to their critical review. These undertakings will make up the bulk of the proposed thesis structure, enumerated below in Chapter 5: Thesis Structure.
+Once the differences are understood, another tool set will be used to generate visualizations that show evolution of techniques over time and the transfer or coincidental invention techniques among composers. While there are existing tools\cite{ChiptuneSAK} to parse the files, they do not perform such analysis. Informal collaboration with Demoscene artists will be maintained throughout to ensure the research is calibrated against the community’s understanding of techniques and subject to their critical review. It is expected that this phase of the research will require the most time.
 
-Throughout Methodology the term “playroutine” will be used to describe sound producing machine language programs (versus SID files which are containers for playroutines), with the central technique of “register logging” (reading sequences from what the playroutine does to program the SID chip to produce sound). An individual stand alone, comparable, sound producing sequence will be called a “SID Sound Fragment”.
+Throughout this section the term “playroutine”\ref{playroutines} will be used to describe sound producing machine language programs (versus SID files which are containers for playroutines), with the central technique of “register logging” (reading sequences from what the playroutine does to program the SID chip to produce sound). An individual stand alone, comparable, sound producing sequence will be called a “SID Sound Fragment”\ref{ssf}.
 
-The remainder of this chapter consists of the technical foundations that will support the research including some characterization of the hardware and software used. The Commodore 64 platform’s synthesizer features (in particular the SID chip) will be described including a programming approach. This approach covers how music is performed on the Commodore 64 (playroutines), how composers command the hardware, and how these commands are expressed and also captured for analysis (register logging). A framework for complexity description, comparison and analysis is introduced (the SID Sound Fragment).
+The remainder of this chapter consists of the technical foundations that will support the research including some characterization of the hardware and software used. The Commodore 64 platform’s synthesizer features (in particular the SID chip) will be described including the programming approach. This approach covers how music is performed on the Commodore 64\ref{playroutines}, how composers command the hardware, and how these commands are expressed and also captured for analysis (register logging\ref{reglog}).
 
 \subsection{Playroutines}
+\label{playroutines}
 
 A machine language program, or performance, that programs the SID chip to produce sound has been described as a playroutine. The playroutine may be the only program running (such as in a SID file) or it may be cooperatively integrated within another program (for example, a game). Since a playroutine is in the form of a Turing complete computer program it can conceivably take any arbitrarily complex form. However, a common form represented in the HVSC is interrupt driven (a programmable timer triggers an interrupt at some regular interval, which in turn triggers the playroutine to write changes to the SID chip).
 
 \subsection{Register logging}
+\label{reglog}
 
-The most fundamental data upon which the analysis will be based are changes in state (register modifications) of the SID chip. The approach will be to use decompilation tools that intercept all calls between a playroutine and an emulated SID chip. A performance can therefore be represented as a time ordered list of calls, where each call is defined as a 4-tuple.
+The most fundamental data upon which the analysis will be based are changes in state (register modifications) of the SID chip. The approach will be to use decompilation tools that intercept all calls between a playroutine and an emulated SID chip. A performance can therefore be represented as a time ordered list of calls, where each call is defined as a 4-tuple, as represented with an example in table \ref{table:examplelog}. The Video Game Music\cite{vgmspec} specification is an existing similar approach specific to the Sega family of game consoles.
 
-\begin{table}
+The sequence and content of the calls contain the “patch” information (how a voice is being manipulated - for example switching from a pulse waveform to a noise waveform within 20ms, to produce a percussive sound, as well as score information over a longer time scale (for repeated subsequences producing percussive sounds at regular intervals).
+
+\begin{table*}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \rule[-1ex]{0pt}{2.5ex} Time Diff & Chip No & SID Register & Value \\
@@ -183,9 +204,7 @@ The most fundamental data upon which the analysis will be based are changes in s
     \end{tabular}
     \caption{Example SID register log}
     \label{table:examplelog}
-\end{table}
-
-The sequence and content of the calls contain the “patch” information (how a voice is being manipulated - for example switching from a pulse waveform to a noise waveform within 20ms, to produce a percussive sound, as well as score information over a longer time scale (for repeated subsequences producing percussive sounds at regular intervals).
+\end{table*}
 
 \subsection{Voice 3 feedback}
 
@@ -219,15 +238,11 @@ Aside from the voices, the SID chip has programmable filters and a 4 bit volume 
 
 \subsection{ADSR envelope bugs}
 
-One of the SID chip’s most documented flaws is a non deterministic ADSR envelope. How the envelope operates upon triggering depends upon its state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state.
+One of the SID chip’s most documented flaws is a non deterministic ADSR envelope. Composer management of this significant hardware flaw is a specific but not exclusive example of a kind of expression to be studied throughout the research. How the envelope operates upon triggering depends upon its state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state. This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model.
 
-This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model.
+\subsection{Evolution of SID sample playback}
 
-Composer management of this significant hardware flaw is a specific but not exclusive example of a kind of expression to be studied throughout the research.
-
-\subsection{SID Sound Fragment}
-
-Given the SID has an envelope per voice, a convenient way to model a patch is from the envelope being triggered (when the GATE bit is set to 1). This distinguishes a new window (potentially encompassing many other SID writes, for example changing frequencies or waveforms) from a preceding window. This window can be described as a SID Sound Fragment. A SSF must include all information that could influence the output of a voice (including its FM paired voice, and filters).
+While the SID chip was not originally specified to include digital sample playback, multiple playback methods have been independently discovered. The most simple method is using the volume register as a 4 bit DAC, while the more complex methods involve using multiple voices together to produce higher resolution waveforms (sometimes in combination with the volume register). As a thesis research outcome, a section with a a detailed analysis of the techniques and the ancillary techniques (e.g. digital signal processing) will be included.
 
 \subsection{High/low data rate}
 
@@ -235,13 +250,14 @@ Based on preliminary work on complexity assessment (see below) a wide range of c
 
 The high data rate case is expected to be indicative of very specific synthesis techniques (such as high resolution samples). The low data rate case is expected to be much more common based on preliminary work analyzing HVSC’s metadata.
 
-\subsection{Evolution of SID sample playback}
+\subsection{SID Sound Fragment}
+\label{ssf}
 
-While the SID chip was not originally specified to include digital sample playback, multiple playback methods have been independently discovered. The most simple method is using the volume register as a 4 bit DAC, while the more complex methods involve using multiple voices together to produce higher resolution waveforms (sometimes in combination with the volume register). In the final thesis document, a section with a a detailed analysis of the techniques and the ancillary techniques (eg. digital signal processing) will be included.
+Given the SID has an envelope per voice, a convenient way to model a patch is from the envelope being triggered (when the GATE bit is set to 1). This distinguishes a new window (potentially encompassing many other SID writes, for example changing frequencies or waveforms) from a preceding window. This window can be described as a SID Sound Fragment. A SSF must include all information that could influence the output of a voice (including its FM paired voice, and filters). A SSF is essentially a DNA fragment, and is a set of register change entries that describe a patch that might be found in any given piece of music.
 
 \subsection{SID patch model}
 
-A common patch description will be required to describe all possible SID programming methods, whether low or high data rate. This is likely to be an augmented SSF (SID Sound Fragment, see above), represented at various levels of optional precision and resolution (for example option- ally dropping frequency changes, to compare SSFs with the same waveform combinations regardless of pitch).
+A common patch description will be required to describe all possible SID programming methods, whether low or high data rate. This is likely to be an augmented SSF (SID Sound Fragment, see above), represented at various levels of optional precision and resolution (for example optionally dropping frequency changes, to compare SSFs with the same waveform combinations regardless of pitch).
 
 Tools will be required to translate SSFs into these various forms, including to external synthesis software (so that extracted patches can be verified or re-used in existing C64 synthesis software).
 
@@ -263,9 +279,10 @@ Aside from tools intended for analysis, tools will be developed to creatively pe
 
 \subsection{Methodology summary}
 
-In the development of this proposal some rudimentary tools have been developed (see following section), which have in turn also suggested probable analysis components such as the SID Sound Fragment as part of the DNA sequencing metaphor. The proposed SID Sound Fragment could be compared between performances and composers at varying levels of precision. The proposed Methodology has been developed around the High Voltage SID Collection, but can be applied to any Commodore 64 software, so the research could be expanded to other collections.
+In the development of this proposal some rudimentary tools have been developed (see following section), which have in turn also suggested probable analysis components such as the SID Sound Fragment as part of the DNA sequencing metaphor. The proposed SID Sound Fragment could be compared between performances and composers at varying levels of precision. The proposed Methodology has been developed around the High Voltage SID Collection, but can be applied to any Commodore 64 software, and so the research could be expanded to other collections.
 
 \section{Preliminary work}
+\label{prelim}
 
 \subsection{Overview}
 
@@ -273,15 +290,16 @@ The tools and concepts discussed in Methodology were developed and applied to th
 
 \subsection{Decompilation}
 
-Basic tools have been assembled (see above) based on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept.
+Basic tools that implement register logging\ref{reglog} on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were writtento facilitate the following.
 
 \subsection{sidtableflip}
+\label{sidtableflip}
 
-An experimental model named sidtableflip\cite{sidtableflip}, based on the pyTorch framework, has been developed. This model is capable of probabilistic prediction of music based on register logs, in snippets of 30 to 60s. This model exercises the register logging methodology, verifies research platform hardware and software requirements (including a dedicated RTX 4090 GPU), and provides a testing method for future composer and technique identification techniques as well as potential generative creative works.
+An experimental model named sidtableflip\cite{sidtableflip}, based on the pyTorch framework, has been developed. This model is capable of probabilistic prediction of music based on register logs, in snippets of 30 to 60s. This model exercises the register logging methodology, verifies research platform hardware and software requirements (including a dedicated RTX 4090 GPU), and provides a testing method for future composer and technique identification techniques (such as sparse autoencoders)  as well as potential generative creative works.
 
 sidtableflip is based on pyTorch reference text generator’s Transformer architecture\cite{pytexample}, with the most significant difference in tokenizing the register log - each unique register assignment in the log is a token. A convention in text generation models is incorporation of punctuation with each word (e.g. assuring ”word,” and word!” are different tokens with their accompanying context).
 
-Since sidtableflip incorporates the time since the last register change with each token,  it effectively includes the musical ”punctuation” in the form of cadence and tempo. A 4 layer Transformer with 2 attention heads and 256 embedding dimensions, predicting 2048 call sequences, takes approximately 1 day to train over 64 songs, comprising a sequence 3 million tokens long with approximately 20000 unique tokens.
+Since sidtableflip incorporates the time since the last register change with each token, it effectively includes the musical ”punctuation” in the form of cadence and tempo. A 4 layer Transformer with 2 attention heads and 256 embedding dimensions, predicting 2048 call sequences, takes approximately 1 day to train over 64 songs, comprising a sequence 3 million tokens long with approximately 20000 unique tokens.
 
 \subsection{Waveform complexity visualization}
 
@@ -349,11 +367,11 @@ The thesis will be arranged as summarized in table \ref{table:timebudget} , with
 
   An explicit goal is a collaboration with an artist which may take the form of a partially generative performance, and/or a tool that enables an artist to identify the use of a particular technique in any arbitrary piece of music.
 
-  The research will be proposed for presentation at a Demoparty in 2025, where Demoscene artists will be engaged for their critical feedback.
+  The research will be proposed for presentation at a Demoparty in 2025 or 2026, where Demoscene artists will be engaged for their critical feedback.
 
   \subsection{Datasets}
 
-Aside from performance opportunities that may arise during the course of the research, the primary dataset to be produced (aside from the visualizations described above), together with a tool will enumerate the relationships between a given performance and all other known performances.	The tools and resulting research are proposed to be submitted for publication progressively and iteratively throughout (for example, starting with a paper discussing waveform complexity over time). u
+Aside from performance opportunities that may arise during the course of the research, the primary dataset to be produced (aside from the visualizations described above), together with a tool will enumerate the relationships between a given performance and all other known performances.	The tools and resulting research are proposed to be submitted for publication progressively and iteratively throughout (for example, starting with a paper discussing waveform complexity over time).
 
 \section{Novel contributions and conclusions}
 
