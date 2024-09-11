@@ -201,6 +201,12 @@ The sequence and content of the calls contain the “patch” information (how a
     \label{table:examplelog}
 \end{table*}
 
+The register log depends upon the SID chip being programmed as a write-only device, where the order of changes is significant, but the performance is not directly aware of the SID chip’s audio output in real time.
+
+However, unlike the other voices, voice 3’s accumulator state can be read from a dedicated 16 bit register. This allows a playroutine to use this state as part of further signal processing or synthesis techniques. For example, this state could be entered into a delay line or queue, and translated into a 4 bit digital sample to be played back via the volume register as delay effect.
+
+It will therefore be necessary to include voice 3’s accumulator state in the register log, along with an additional field indicating if and where the machine code has inspected this state, to enable further analysis of this technique.
+
 \subsection{VICE emulator logging modifications}
 
 The VICE emulator provides a debugging “dump” function that produces logs in the above format, except for the chip number (VICE is modified to add this). The output is post processed to remove redundant state (see below). It will also be necessary to add voice 3 state as above.
