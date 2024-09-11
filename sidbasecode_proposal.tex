@@ -68,7 +68,9 @@ The research will use a community curated collection of Commodore 64 music known
 
   \section{Introduction}
 
-At first glance, musicological analysis of music on the reputedly best selling computer of all time, the Commodore 64\cite{ieeec64} might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. This chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters. The chip was also integrated into Elektron’s first commercial product, the SIDStation\cite{sidstation}. The SIDStation made SID programming much more accessible to musicians allowing patches to be programmed and sequenced via MIDI, which would otherwise involve writing 6502 machine code. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
+  At first glance, musicological analysis of music on the reputedly best selling computer of all time, the Commodore 64\cite{ieeec64} might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. The chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters.
+
+  The chip was also integrated into Elektron’s first commercial product, the SIDStation\cite{sidstation}. The SIDStation made SID programming much more accessible to musicians allowing patches to be programmed and sequenced via MIDI, which would otherwise involve writing 6502 machine code. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
 
 SID chip programming on the original Commodore 64 involves carefully constructed sequences of changes to memory registers at carefully chosen intervals. These sequences are analogous to DNA - a given performance will include sequences programmed by a composer, either of their own invention (including re-sequencing from another performance that might use similar patches), or sequences recovered from the work of others.
 
@@ -148,7 +150,7 @@ To perform systematic analysis of all SID programming techniques in the HVSC it 
 
 As raw DNA, the HVSC includes metadata with each performance, including composer names and release dates (where known), and some advisory metadata for a SID player program about how to play the performance, packaged together as a SID file\cite{sidfile}. These metadata include what model of SID chip(s) to use, whether to use timer based playback (see below) etc. A SID file therefore is a complete machine language program that produces sound when played.
 
-In summary the overall methodology will be to understand the structure of all SID files in the HVSC, create tools that parse the files and understand their differences, including understanding the effect of specific sequences of machine language instructions on audio output. 
+In summary the overall methodology will be to understand the structure of all SID files in the HVSC, create tools that parse the files and understand their differences, including understanding the effect of specific sequences of machine language instructions on audio output.
 
 Once the differences are understood, another tool set will be used to generate visualizations that show evolution of techniques over time and the transfer or coincidental invention techniques among composers. While there are existing tools\cite{ChiptuneSAK} to parse the files, they do not perform such analysis. Informal collaboration with Demoscene artists will be maintained throughout to ensure the research is calibrated against the community’s understanding of techniques and subject to their critical review. These undertakings will make up the bulk of the proposed thesis structure, enumerated below in Chapter 5: Thesis Structure.
 
@@ -162,8 +164,9 @@ A machine language program, or performance, that programs the SID chip to produc
 
 \subsection{Register logging}
 
-The most fundamental data upon which the analysis will be based are changes in state (register modifications) of the SID chip. The approach will be to use decompilation tools that intercept all calls between a playroutine and an emulated SID chip. A performance can therefore be represented as a time ordered list of calls, where each call is defined as a 4-tuple. The following table consists of 4 calls.
+The most fundamental data upon which the analysis will be based are changes in state (register modifications) of the SID chip. The approach will be to use decompilation tools that intercept all calls between a playroutine and an emulated SID chip. A performance can therefore be represented as a time ordered list of calls, where each call is defined as a 4-tuple.
 
+\begin{table}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \rule[-1ex]{0pt}{2.5ex} Time Diff & Chip No & SID Register & Value \\
@@ -178,9 +181,12 @@ The most fundamental data upon which the analysis will be based are changes in s
         \rule[-1ex]{0pt}{2.5ex} ... & ... & ... & ... \\
         \hline
     \end{tabular}
+    \caption{Example SID register log}
+    \label{table:examplelog}
+\end{table}
 
 The sequence and content of the calls contain the “patch” information (how a voice is being manipulated - for example switching from a pulse waveform to a noise waveform within 20ms, to produce a percussive sound, as well as score information over a longer time scale (for repeated subsequences producing percussive sounds at regular intervals).
-    
+
 \subsection{Voice 3 feedback}
 
 The register log depends upon the SID chip being programmed as a write-only device, where the order of changes is significant, but the performance is not directly aware of the SID chip’s audio output in real time.
@@ -306,7 +312,7 @@ In development of the proposal the complexity and scope of the dataset was explo
 
 \section{Thesis structure}
 
-The thesis will be arranged as follows, with an approximate time budget relative to a 3 year timeframe. The bulk of the time is anticipated to be spent on the identification of techniques themselves followed by the study of how the techniques have evolved and propagated between artists.
+The thesis will be arranged as summarized in table \ref{table:timebudget} , with an approximate time budget relative to a 3 year timeframe. The bulk of the time is anticipated to be spent on the identification of techniques themselves followed by the study of how the techniques have evolved and propagated between artists.
 
 \begin{table*}[htb]
   \begin{tabular}{|l|l|l|}
@@ -332,6 +338,8 @@ The thesis will be arranged as follows, with an approximate time budget relative
         Bibliography/references &  & 2.5\% \\
         \hline
   \end{tabular}
+  \caption{Thesis structure and time budget}
+  \label{table:timebudget}
 \end{table*}
 
 
