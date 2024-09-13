@@ -51,11 +51,11 @@
        \begin{abstract}
 Constraints have long been the drivers of creativity and innovation, as reputedly stated by Ernest Rutherford - “we haven’t the money, so we’ve got to think”\cite{think}.  Just as in physics, constraints (financial, technical and otherwise) have driven innovation in electronic music, such as with the invention of the acid bass genre based upon the modest capabilities of the Roland TB-303 synthesizer\cite{acidpatterns}.
 
-The Commodore 64 introduced in the early 1980’s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer. This challenge continues to be answered today through creative, ongoing competitions within an informal international community known as the Demoscene.
+The Commodore 64, introduced in the early 1980’s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer. This challenge continues to be answered today through creative, ongoing competitions within an informal international community known as the Demoscene.
 
 This research proposes to document, visualize and attribute to composers innovation in Commodore 64 based music using purpose built computational musicological tools and techniques. Music on the Commodore 64 is realized in the form of low level machine code due to the limitations of the platform, so is a form of software, and metaphorically similar to DNA in that it can be recombined, shared, and compared over time to understand the evolutionary aspect of innovation.
 
-The research will use a community curated collection of Commodore 64 music known as the High Voltage SID Collection, and the results (particularly attribution of innovation which is a core Demoscene value) will be contributed back to the Demoscene community, including any new sonic techniques discovered and potentially new creative musical work in collaboration with Demoscene artists.
+The research will use a community curated collection of Commodore 64 music known as the High Voltage SID Collection (HVSC), and the results (particularly attribution of innovation which is a core Demoscene value) will be contributed back to the Demoscene community, including any new sonic techniques discovered and potentially new creative musical work in collaboration with Demoscene artists.
          \end{abstract}
 
         \begin{center}
@@ -68,7 +68,7 @@ The research will use a community curated collection of Commodore 64 music known
 
   \section{Introduction}
 
-  At first glance, musicological analysis of music on the reputedly best selling computer of all time, the Commodore 64\cite{ieeec64} might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. The chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters.
+  At first glance, musicological analysis of music on the reputedly best selling computer of all time, the Commodore 64\cite{ieeec64}, might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. The chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters.
 
   The chip was also integrated into Elektron’s first commercial product, the SIDStation\cite{sidstation}.  The SIDStation made SID programming much more accessible to musicians allowing patches (a patch being proprietary configuration describing how to produce a certain sound) to be programmed and sequenced via the MIDI protocol from other industry standard music hardware and software. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
 
@@ -76,7 +76,7 @@ SID chip programming on the original Commodore 64 involves carefully constructed
 
 These “DNA” sequences can then be indexed across documented performances, allowing for variation (both variations that produce the same audio output, and variations that produce slightly or vastly different output depending on the precise order in which they are executed). As with DNA, these sequences can be recombined and edited to produce new sequences, compared with other sequences. The effect of changes to a sequence can be determined by executing it on a real or emulated SID and comparing the resulting audio.
 
-The research will make systematic study of all known SID programming sequences (as represented in the High Voltage SID Collection\cite{hvsc} further introduced below\ref{hvsc}, which will include methods for identifying the same or similar programming techniques across all performances. Since the HVSC collection includes composer names and dates for most performances, it will be possible to realize an evolutionary timeline of techniques (so far as the community provided metadata allow).
+The research will make systematic study of all known SID programming sequences (as represented in the High Voltage SID Collection\cite{hvsc} further introduced in section \ref{hvsc}), which will include methods for identifying the same or similar programming techniques across all performances. Since the HVSC collection includes composer names and dates for most performances, it will be possible to realize an evolutionary timeline of techniques (so far as the community provided metadata allow).
 
   \section{Background}
 
@@ -88,7 +88,7 @@ This research focuses on the technological boundary between these two fields, in
 
 It is also necessary to contrast the Commodore 64 with other platforms of the period by describing its relative strength in expressive features and its potential for future exploration and to discuss the degree of intersection between the field of machine learning and this research.
 
-Following this background, the Methodology\ref{methodology} section will describe precisely how Commodore 64 musicians realize their creativity on the platform, and techniques for quantifying that expression of creativity and how it has evolved and transferred. The Preliminary Work\ref{prelim} section includes a precise example of how creativity can be described, visualized and demonstrated to rapidly increase over time using those research techniques, and suggests a direction and final form for research findings and potential accompanying creative works.
+Following this background, the Methodology\ref{methodology} section will describe precisely how Commodore 64 musicians realize their creativity on the platform, and techniques for quantifying that expression of creativity and how it has evolved and transferred. Section \ref{prelim} includes a precise example of how creativity can be described, visualized and demonstrated to rapidly increase over time using those research techniques, and suggests a direction and final form for research findings and potential accompanying creative works.
 
 \subsection{Demoscene}
 
@@ -101,7 +101,7 @@ Demoscene culture is also characterized in part by cultural gatekeepers with imp
 
 One way the Demoscene expresses and curates its creative works is through community collections such as the High Voltage SID Collection\cite{hvsc}. This collection represents the perfect subject of creative study because it includes not only the complete creative works themselves but the metadata attributing composer and release date, all in a machine readable format. At the time of writing, the collection (version 81) includes over 58,000 songs. The collection also contains some performances which have not yet been attributed to a composer (an explicit research goal is to attribute these performances).
 
-While it cannot be proven to include every known Commodore 64 performance as it relies upon community contributions, informal consultation with Demoscene artists suggest that it is a representative collection, and if there are other sources available they will be accommodated during the research (given that the performances in other collections would also be machine code, they are amenable to the same analysis and tools).
+While it cannot be proven to include every known Commodore 64 performance, as it relies upon community contributions, informal consultation with Demoscene artists suggest that it is a representative collection, and if there are other sources available they will be accommodated during the research (given that the performances in other collections would also be machine code, they are amenable to the same analysis and tools).
 
 \subsection{Contemporaneous computing platforms}
 
@@ -123,9 +123,7 @@ The proposed tools need to blur the line between conventional score (instruction
 
 \subsection{Machine code and original SID hardware}
 
-Given the lack of built in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}, and the chip exhibits significant performance differences (see following) even within units of the same model number and revision.
-
-While several software and hardware emulations of the SID chip exist, the behavior of the original hardware has proven difficult to reproduce exactly and emulator defects continue to be discovered particularly in advanced configurations such as combined waveforms\cite{fixcombwaveforms}. Therefore analysis must include not only methods to work with original hardware, but original machine code as well.
+Given the lack of built in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}. While several software and hardware emulations of the SID chip exist, the chip also exhibits significant performance differences (such as with combined waveforms \cite{fixcombwaveforms}) even within units of the same model number and revision. These differences have made behavior of the original hardware has proven difficult to reproduce exactly and emulator defects continue to be discovered particularly in advanced configurations. Therefore analysis must include not only methods to work with original hardware, but original machine code as well.
 
 As described in the SID patent\cite{sidpatent}, the SID implements three voices each of which has pulse, sawtooth, triangle and noise waveforms (from an internal pseudo random generator), and low, band and high pass filters. Waveforms may be selected in combination and voices may or may not be routed to an active filter. There is a 4 bit volume register affecting all the voices.
 
@@ -160,15 +158,15 @@ These capabilities represent research challenges, partly in accommodating rapid 
 
 To perform systematic analysis of all SID programming techniques in the HVSC it must be possible to model and describe these techniques and build a kind of DNA database, working from the definition of chiptune DNA established in the Introduction. Tools will be built to gather the DNA along with metadata from where and when it originated, and then enable comparison and sequencing (in the sense of determining the effect of a given DNA sequence).
 
-As raw DNA, the HVSC includes metadata with each performance, including composer names and release dates (where known), and some advisory metadata for a SID player program about how to play the performance, packaged together as a SID file\cite{sidfile}. These metadata include what model of SID chip(s) to use, whether to use timer based playback (see below) etc. A SID file therefore is a complete machine language program that produces sound when played.
+As raw DNA, the HVSC includes metadata with each performance, including composer names and release dates (where known), and some advisory metadata for a SID player program about how to play the performance, packaged together as a SID file\cite{sidfile}. These metadata include what model of SID chip(s) to use, whether to use timer based playback (section \ref{playroutines}), etc. A SID file therefore includes a complete machine language program that produces sound when played, which can be executed on a real or emulated Commodore 64.
 
 In summary the overall first stage of the research will be to understand the structure of all SID files in the HVSC, create tools that parse the files and understand their differences, including understanding the effect of specific sequences of machine language instructions on audio output.
 
-Once the differences are understood, another tool set will be used to generate visualizations that show evolution of techniques over time and the transfer or coincidental invention techniques among composers. While there are existing tools\cite{ChiptuneSAK} to parse the files, they do not perform such analysis. Informal collaboration with Demoscene artists will be maintained throughout to ensure the research is calibrated against the community’s understanding of techniques and subject to their critical review. It is expected that this phase of the research will require the most time.
+Once the differences are understood, another tool set will be used to generate visualizations that show evolution of techniques over time and the transfer or coincidental invention of techniques among composers. While there are existing tools such as ChiptuneSAK\cite{ChiptuneSAK} that parse the files, they do not perform such analysis. Informal collaboration with Demoscene artists will be maintained throughout to ensure the research is calibrated against the community’s understanding of techniques and subject to their critical review. It is expected that this phase of the research will require the most time.
 
-Throughout this section the term “playroutine”\ref{playroutines} will be used to describe sound producing machine language programs (versus SID files which are containers for playroutines), with the central technique of “register logging” (reading sequences from what the playroutine does to program the SID chip to produce sound). An individual stand alone, comparable, sound producing sequence will be called a “SID Sound Fragment”\ref{ssf}.
+Throughout this section the term “playroutine” will be used to describe sound producing machine language programs (versus SID files which are containers for playroutines), with the central technique of “register logging” (reading sequences from what the playroutine does to program the SID chip to produce sound). An individual stand alone, comparable, sound producing sequence will be called a “SID Sound Fragment” defined in section \ref{ssf}.
 
-The remainder of this chapter consists of the technical foundations that will support the research including some characterization of the hardware and software used. The Commodore 64 platform’s synthesizer features (in particular the SID chip) will be described including the programming approach. This approach covers how music is performed on the Commodore 64\ref{playroutines}, how composers command the hardware, and how these commands are expressed and also captured for analysis (register logging\ref{reglog}).
+The remainder of this chapter consists of the technical foundations that will support the research, including some characterization of the hardware and software used. The Commodore 64 platform’s synthesizer features (in particular the SID chip) will be described including the programming approach. This approach covers how music is performed on the Commodore 64 using playroutines defined in section \ref{playroutines}, how composers command the hardware, and how these commands are expressed and also captured for analysis (register logging, section \ref{reglog}).
 
 \subsection{Playroutines}
 \label{playroutines}
@@ -180,7 +178,7 @@ A machine language program, or performance, that programs the SID chip to produc
 
 The most fundamental data upon which the analysis will be based are changes in state (register modifications) of the SID chip. The approach will be to use decompilation tools that intercept all calls between a playroutine and an emulated SID chip. A performance can therefore be represented as a time ordered list of calls, where each call is defined as a 4-tuple, as represented with an example in table \ref{table:examplelog}. The Video Game Music\cite{vgmspec} specification is an existing similar approach specific to the Sega family of game consoles.
 
-The sequence and content of the calls contain the “patch” information (how a voice is being manipulated - for example switching from a pulse waveform to a noise waveform within 20ms, to produce a percussive sound, as well as score information over a longer time scale (for repeated subsequences producing percussive sounds at regular intervals).
+The sequence and content of the calls contain the “patch” information (how a voice is being manipulated - for example switching from a pulse waveform to a noise waveform within 20ms  to produce a percussive sound) in well as score information over a longer time scale (for repeated subsequences producing percussive sounds at regular intervals).
 
 \begin{table*}
     \begin{tabular}{|c|c|c|c|}
@@ -209,7 +207,7 @@ It will therefore be necessary to include voice 3’s accumulator state in the r
 
 \subsection{VICE emulator logging modifications}
 
-The VICE emulator provides a debugging “dump” function that produces logs in the above format, except for the chip number (VICE is modified to add this). The output is post processed to remove redundant state (see below). It will also be necessary to add voice 3 state as above.
+The VICE Commodore 64 emulator\cite{asidvice} provides a debugging “dump” function that produces logs in the above format, except for the chip number. The output is post processed to remove redundant state (section \ref{redundantstate}). It will also be necessary to add voice 3 state as above as well as chip number (section \ref{decompilation}).
 
 \subsection{Sequence segmentation}
 
@@ -218,6 +216,7 @@ The fundamental analysis technique for the thesis is the segmentation of sub seq
 There are several anticipated stages in segmentation. It is assumed that for a given SID chip (emulated or otherwise) initialized to the same state, that the same sequence of instructions will result in the same output. This assumption will need to be verified throughout as if not correct would invalidate comparison. It is also expected that a set of different sequences may result in the same audio output, so there may be a many to one relationship for a given audio output.
 
 \subsection{Redundant state}
+\label{redundantstate}
 
 It follows also that there may be sequences that produce no change in audio output (for example, repeatedly writing the same value to a frequency register, or writing a value to a register with less than 8 significant bits). These sequences can be eliminated because by definition their significance is inaudible.
 
@@ -225,11 +224,11 @@ Depending on the machine code making the SID register calls, there may be variat
 
 \subsection{ADSR envelope bugs}
 
-One of the SID chip’s most documented flaws is a non deterministic ADSR envelope. Composer management of this significant hardware flaw is a specific but not exclusive example of a kind of expression to be studied throughout the research. How the envelope operates upon triggering depends upon its state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state. This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model.
+One of the SID chip’s most documented flaws is in the ADSR envelope generator. How the envelope operates upon triggering depends upon its previous state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state. This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model. Composer management of this flaw is a specific example of a kind of expression to be studied throughout the research. 
 
 \subsection{Evolution of SID sample playback}
 
-While the SID chip was not originally specified to include digital sample playback, multiple playback methods have been independently discovered. The most simple method is using the volume register as a 4 bit DAC, while the more complex methods involve using multiple voices together to produce higher resolution waveforms (sometimes in combination with the volume register). As a thesis research outcome, a section with a a detailed analysis of the techniques and the ancillary techniques (e.g. digital signal processing) will be included.
+While the SID chip was not originally specified to include digital sample playback, multiple playback methods have been independently discovered. The most simple method is using the volume register as a 4 bit DAC, while the more complex methods involve using multiple voices together to produce higher resolution waveforms (sometimes in combination with the volume register). As a thesis research outcome, a section with a detailed analysis of the techniques and the ancillary techniques (e.g. digital signal processing) will be included.
 
 \subsection{Voice multiplexing}
 
@@ -239,7 +238,7 @@ All voices are affected by the volume register and can be selectively routed to 
 
 \subsection{High/low data rate}
 
-Based on preliminary work on complexity assessment (see below) a wide range of complexity in playroutines is anticipated, from very simple, monophonic and mono timbral to extremely complex performances incorporating voice 3 feedback, digital samples and FM synthesis. It is also anticipated that playroutines maybe separated broadly into two groups - low data rate (where the SID chip is programmed strictly on timer intervals of several or perhaps even 10s of milliseconds), and high data rate (where SID chip writes are required potentially several times per millisecond).
+Based on preliminary work on complexity assessment (section \ref{complexity}) a wide range of complexity in playroutines is anticipated, from very simple, monophonic and mono timbral to extremely complex performances incorporating voice 3 feedback, digital samples and FM synthesis. It is also anticipated that playroutines may be separated broadly into two groups - low data rate (where the SID chip is programmed strictly on timer intervals of several or perhaps even 10s of milliseconds), and high data rate (where SID chip writes are required potentially several times per millisecond).
 
 The high data rate case is expected to be indicative of very specific synthesis techniques (such as high resolution samples). The low data rate case is expected to be much more common based on preliminary work analyzing HVSC’s metadata.
 
@@ -255,7 +254,7 @@ Given the SID has an envelope per voice, a convenient way to model a patch is fr
 
 \subsection{SID patch model}
 
-A common patch description will be required to describe all possible SID programming methods, whether low or high data rate. This is likely to be an augmented SSF (SID Sound Fragment, see above), represented at various levels of optional precision and resolution (for example optionally dropping frequency changes, to compare SSFs with the same waveform combinations regardless of pitch).
+A common patch description will be required to describe all possible SID programming methods, whether low or high data rate. This is likely to be an augmented SSF (SID Sound Fragment, section \ref{ssf}), represented at various levels of optional precision and resolution (for example optionally dropping frequency changes, to compare SSFs with the same waveform combinations regardless of pitch).
 
 Tools will be required to translate SSFs into these various forms, including to external synthesis software (so that extracted patches can be verified or re-used in existing C64 synthesis software).
 
@@ -295,8 +294,9 @@ Therefore, while the proposed research will be informed by the field of machine 
 However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
 
 \subsection{Decompilation}
+\label{decompilation}
 
-Basic tools that implement register logging\ref{reglog} on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate the following.
+Basic tools that implement modified register logging\ref{reglog} on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate the following.
 
 \subsection{sidtableflip}
 \label{sidtableflip}
@@ -308,6 +308,7 @@ sidtableflip is based on PyTorch reference text generator’s Transformer archit
 Since sidtableflip incorporates the time since the last register change with each token, it effectively includes the musical ”punctuation” in the form of cadence and tempo. A 4 layer Transformer with 2 attention heads and 256 embedding dimensions, predicting 2048 call sequences, takes approximately 1 day to train over 64 songs, comprising a sequence 3 million tokens long with approximately 20000 unique tokens.
 
 \subsection{Waveform complexity visualization}
+\label{complexity}
 
 A preliminary analysis has been performed year by year, to show the overall increase in expression and complexity in performances over time by producing a directed graph summarizing all the state transitions of each SID voice control register (the register which configures a voice to use certain waveforms or be modulated by another voice, and whether to restart the ADSR envelope).
 
