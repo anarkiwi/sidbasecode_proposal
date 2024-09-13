@@ -88,7 +88,7 @@ This research focuses on the technological boundary between these two fields, in
 
 It is also necessary to contrast the Commodore 64 with other platforms of the period by describing its relative strength in expressive features and its potential for future exploration and to discuss the degree of intersection between the field of machine learning and this research.
 
-Following this background, section \ref{methodology} will describe precisely how Commodore 64 musicians realize their creativity on the platform, and techniques for quantifying that expression of creativity and how it has evolved and transferred. Section \ref{prelim} includes a precise example of how creativity can be described, visualized and demonstrated to rapidly increase over time using those research techniques, and suggests a direction and final form for research findings and potential accompanying creative works.
+Following this background, the Methodology\ref{methodology} section will describe precisely how Commodore 64 musicians realize their creativity on the platform, and techniques for quantifying that expression of creativity and how it has evolved and transferred. Section \ref{prelim} includes a precise example of how creativity can be described, visualized and demonstrated to rapidly increase over time using those research techniques, and suggests a direction and final form for research findings and potential accompanying creative works.
 
 \subsection{Demoscene}
 
@@ -123,9 +123,7 @@ The proposed tools need to blur the line between conventional score (instruction
 
 \subsection{Machine code and original SID hardware}
 
-Given the lack of built in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}.
-
-While several software and hardware emulations of the SID chip exist, the chip also exhibits significant performance differences (such as with combined waveforms \cite{fixcombwaveforms}) even within units of the same model number and revision. These differences have made behavior of the original hardware has proven difficult to reproduce exactly and emulator defects continue to be discovered particularly in advanced configurations. Therefore analysis must include not only methods to work with original hardware, but original machine code as well.
+Given the lack of built in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}. While several software and hardware emulations of the SID chip exist, the chip also exhibits significant performance differences (such as with combined waveforms \cite{fixcombwaveforms}) even within units of the same model number and revision. These differences have made behavior of the original hardware has proven difficult to reproduce exactly and emulator defects continue to be discovered particularly in advanced configurations. Therefore analysis must include not only methods to work with original hardware, but original machine code as well.
 
 As described in the SID patent\cite{sidpatent}, the SID implements three voices each of which has pulse, sawtooth, triangle and noise waveforms (from an internal pseudo random generator), and low, band and high pass filters. Waveforms may be selected in combination and voices may or may not be routed to an active filter. There is a 4 bit volume register affecting all the voices.
 
@@ -147,9 +145,9 @@ There was informal consultation with artists, machine learning content engineers
 
 The field of machine learning continues to rapidly advance especially in generative systems. There is every reason to expect continued rapid advances and increased accessibility to artists and the general public, new cultural concerns, and regulatory oversight.
 
-Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent\cite{datacollect}, but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content\cite{euairegs}, and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) in the United States are guided by the NIST risk management framework\cite{nistai}, which may inform future regulation. The music rights management organization APRA AMCOS NZ recently reported its membership's concerns with machine learning and calls for regulation\cite{aprastory}.
+Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent\cite{datacollect}, but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content\cite{euairegs}, and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) in the US are guided by the NIST risk management framework\cite{nistai}, which may inform future regulation. The music rights management organization APRA AMCOS NZ recently reported its membership's concerns with machine learning and calls for regulation\cite{aprastory}.
 
-The practicality of an open source generative model and its use in the detection of model produced music was also explored (see sidtableflip in section \ref{sidtableflip}). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level.
+The practicality of an open source generative model and its use in the detection of model produced music was also explored (see sidtableflip\ref{sidtableflip}). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level.
 
 These capabilities represent research challenges, partly in accommodating rapid advances (which can be managed by relying on standard industry frameworks), but potentially most importantly by evolving regulation. It can be foreseen that a research or non-commercial open source generative model could be exploited in ways not practical to constrain. This would make it potentially subject not just to philosophical concerns but regulatory ones.
 
@@ -188,8 +186,11 @@ The sequence and content of the calls contain the “patch” information (how a
         \rule[-1ex]{0pt}{2.5ex} Time Diff & Chip No & SID Register & Value \\
         \rule[-1ex]{0pt}{2.5ex} (cycles) & & (0-28) & (0-255) \\
         \hline
-        \rule[-1ex]{0pt}{2.5ex} 0 & 0 & 24 & 15 \\
+        \rule[-1ex]{0pt}{2.5ex} 0 & 0 & 1 & 15 \\
         \hline
+        \rule[-1ex]{0pt}{2.5ex} 16 & 0 & 24 & 15 \\
+        \hline
+        
         \rule[-1ex]{0pt}{2.5ex} 16 & 0 & 0 & 8 \\
         \hline
         \rule[-1ex]{0pt}{2.5ex} 8 & 0 & 1 & 1 \\
