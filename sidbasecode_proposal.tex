@@ -207,7 +207,7 @@ It will therefore be necessary to include voice 3’s accumulator state in the r
 
 \subsection{VICE emulator logging modifications}
 
-The VICE Commodore 64 emulator\cite{asidvice} provides a debugging “dump” function that produces logs in the above format, except for the chip number. The output is post processed to remove redundant state (section \ref{redundantstate}). It will also be necessary to add voice 3 state as above as well as chip number (section \ref{decompilation}).
+The VICE Commodore 64 emulator\cite{asidvice} provides a debugging “dump” function that produces logs in the above format, except for the chip number. The output is post processed to remove redundant state (section \ref{redundantstate}). It will also be necessary to add voice 3 state as above as well as chip number (section \ref{prelimover}).
 
 \subsection{Sequence segmentation}
 
@@ -282,8 +282,11 @@ In the development of this proposal some rudimentary tools have been developed (
 \label{prelim}
 
 \subsection{Overview}
+\label{prelimover}
 
 The tools and concepts discussed in Methodology were developed and applied to the High Voltage SID collection as discussed below. The goal of the preliminary work was to informally gauge artistic interest and value of the research and obtain a high level understanding of complexity of performances (specifically, whether the level of complexity was sufficient to research).
+
+Basic tools that implement modified register logging (section \ref{reglog}) on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate complexity analysis (section \ref{complexity}) and an experimental model (section \ref{sidtableflip}).
 
 \subsection{Application of machine learning}
 
@@ -293,15 +296,10 @@ Therefore, while the proposed research will be informed by the field of machine 
 
 However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
 
-\subsection{Decompilation}
-\label{decompilation}
-
-Basic tools that implement modified register logging\ref{reglog} on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate the following.
-
 \subsection{sidtableflip}
 \label{sidtableflip}
 
-An experimental model named sidtableflip\cite{sidtableflip}, based on the PyTorch framework, has been developed. This model is capable of probabilistic prediction of music based on register logs, in snippets of 30 to 60s. This model exercises the register logging methodology, verifies research platform hardware and software requirements (including a dedicated RTX 4090 GPU), and provides a testing method for future composer and technique identification techniques (such as sparse autoencoders)  as well as potential generative creative works.
+An experimental model named sidtableflip\cite{sidtableflip}, based on the PyTorch framework, has been developed. This model is capable of probabilistic generation of music based on register logs, in snippets of 30 to 60s. This model exercises the register logging methodology, verifies research platform hardware and software requirements (including a dedicated RTX 4090 GPU), and provides a testing method for future composer and technique identification techniques (such as sparse autoencoders)  as well as potential generative creative works.
 
 sidtableflip is based on PyTorch reference text generator’s Transformer architecture\cite{pytexample}, with the most significant difference in tokenizing the register log - each unique register assignment in the log is a token. A convention in text generation models is incorporation of punctuation with each word (e.g. assuring ”word,” and word!” are different tokens with their accompanying context).
 
