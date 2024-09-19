@@ -117,7 +117,7 @@ For these reasons expressive complexity on these other platforms is more limited
 
 \subsection{Musicology tools}
 
-There are existing tools for musicological analysis such as Music21\cite{music21} which enables high level score analysis and comparison of composition features such as key transitions and beat signatures. The proposed research goes beyond this level of detail to focus on expression, and will produce new tools that operate at a patch/waveform/microsecond level rather than a more human-centric note/bar/measure level.
+There are existing tools for musicological analysis such as Music21\cite{music21} which enables high level score analysis and comparison of composition features such as key transitions and beat signatures. There are also tools for extracting sonic features from music such as torchaudio\cite{hwang2023torchaudio}, such as the Mel-frequency cepstrum which can be used for machine learning based audio similarity analysis. The proposed research goes beyond this level of detail to focus on expression, and will produce new tools that operate at a patch/waveform/microsecond (MHz) level rather than a more human-centric note/bar/measure level or even audio sample (kHz) level.
 
 This level of detail is necessary because notation intended for human musicians does not define patch parameters such as waveform or FM algorithm, and MIDI-based tools such as Music21, ChiptuneSAK\cite{ChiptuneSAK} or Magenta\cite{Magenta} cannot achieve the level of detail required to capture audio sample level expression.
 
@@ -318,7 +318,7 @@ A preliminary analysis has been performed year by year, to show the overall incr
 
 In the very early years, state transition complexity is quite low and easy to visualize as the number of performances produced is small and composers have not yet explored all possibilities. Complexity very rapidly increases over the next few years. The following diagrams represent all performances produced in the years 1982, 1983, and 1984, and while not the final research product, are illustrative (the size of the directed connection between states is proportional to how often that state transition is used).
 
-The research will explore this more deeply with tools that can selectively focus on different types and sources of complexity (for example, show how a given composer’s technique has evolved over time, and/or how the set or related techniques have evolved, such as combining selected waveforms). This may support a kind of visual complexity notation.
+The research will explore this more deeply with tools that can selectively focus on different types and sources of complexity (for example, show how a given composer’s technique has evolved over time, and/or how the set or related techniques have evolved, such as combining selected waveforms). This may support a kind of visual complexity notation. It will also provide an algorithmic method for identifying all uses of a given programming technique, including (where metadata exist) its first use, providing evidence to support or refute assertions of invention (or co-invention) within the Demoscene or published work on the Demoscene\cite{gatekeepers} or the field of retro computing generally. These methods may be also transferrable easily to other 6502-based platforms and applications (such as Atari 2600 games).
 
 \begin{figure*}
 \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{1982}}
