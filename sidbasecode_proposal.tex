@@ -96,7 +96,7 @@ It is also necessary to contrast the Commodore 64 with other platforms of the pe
 
 The Demoscene transcends music and is a cultural phenomenon of its own\cite{hackingpractices}, including themes of artistic and technical creativity, and has intersections with other communities including computer graphics\cite{siggraphdemo} and information security\cite{layerone}. The Demoscene has accompanied and informed the emergence of critical, networked culture with its beginnings in early pre-Internet personal computing\cite{pioneers}, with expansive attitudes towards exploration and information sharing and challenging conventional copyright restrictions.
 
-Demoscene culture is also characterized in part by cultural gatekeepers with implicit rules for entry\cite{gatekeepers}, either individually or through Demoparties\cite{assembly}, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born\cite{amib}, which realizes a 4 minute audiovisual performance in 256 bytes of code.
+Demoscene culture is also characterized in part by cultural gatekeepers with implicit rules for entry\cite{gatekeepers}, either individually or through Demoparties\cite{assembly}, which are live competitive events often with specific technical goals. An example of a winning entry is A Mind Is Born described further in section \ref{amib}, which realizes a 4 minute audiovisual performance in 256 bytes of code.
 
 \subsection{High Voltage SID Collection}
 \label{hvsc}
@@ -122,6 +122,13 @@ There are existing tools for musicological analysis such as Music21\cite{music21
 This level of detail is necessary because notation intended for human musicians does not define patch parameters such as waveform or FM algorithm, and MIDI-based tools such as Music21, ChiptuneSAK\cite{ChiptuneSAK} or Magenta\cite{Magenta} cannot achieve the level of detail required to capture audio sample level expression.
 
 The proposed tools need to blur the line between conventional score (instructions for a musician) versus computer software (very precise instructions to a computer as musician to produce sound) and expand the scope of study to include very fine details (analogous to the precise handling of the strings of a violin a musician might add as their own personal stylistic expression).
+
+\subsection{A Mind is Born}
+\label{amib}
+
+A compact illustration of musical expression realized through machine code programming is A Mind is Born\cite{amib}. The goal, and chief constraint in this Demoscene audio visual production is size - 256 bytes. This severe size constraint drives a progressively generated song with accompanying visuals, with a highly interdependent implementation (music producing code, is part of and is dependant upon visualization code, and vice versa). The performance has its own pseudo random number generator and uses undefined opcodes (machine code instructions not officially documented by the CPU manufacturer) and self-modifying code all to save memory and realize the melody on one voice. It leverages unsynchronized video memory writes to (deliberately) produce a visual glitch effect. It also manages another voice to produce a bass drum sound with simulated gated compression, and bass drone with an evolving timbre using PCM modulation and a SID filter on the same voice.
+
+While A Mind is Born is an extreme example (in terms of complexity resulting from compact interdependant code), it does illustrate some Demoscene practices including SID programming, specifically voice multiplexing (one voice performing multiple instrument roles) and timbre features beyond simple static waveforms.
 
 \subsection{Machine code and original SID hardware}
 
@@ -228,7 +235,7 @@ Depending on the machine code making the SID register calls, there may be variat
 
 \subsection{ADSR envelope bugs}
 
-One of the SID chip’s most documented flaws is in the ADSR envelope generator. How the envelope operates upon triggering depends upon its previous state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state. This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model. Composer management of this flaw is a specific example of a kind of expression to be studied throughout the research. 
+One of the SID chip’s most documented flaws is in the ADSR envelope generator. How the envelope operates upon triggering depends upon its previous state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state. This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model. Composer management of this flaw is a specific example of a kind of expression to be studied throughout the research. It will be possible to precisely compare the different approaches found to establish which is the most reliable and predictable, identify a previously undocumented technique, or identify a new more effective technique through automated experimentation and comparison on original Commodore 64 hardware.
 
 \subsection{Evolution of SID sample playback}
 
@@ -290,9 +297,9 @@ In the development of this proposal some rudimentary tools have been developed (
 \subsection{Overview}
 \label{prelimover}
 
-The tools and concepts discussed in Methodology were developed and applied to the High Voltage SID collection as discussed below. The goal of the preliminary work was to informally gauge artistic interest and value of the research and obtain a high level understanding of complexity of performances (specifically, whether the level of complexity was sufficient to research).
+The tools and concepts discussed in Methodology were developed and applied to the High Voltage SID collection as discussed below. The goal of the preliminary work was to informally gauge artistic interest and value of the research and obtain a high level understanding of complexity of performances (specifically, whether the level of complexity was sufficient to research). The direct next steps would be to expand the complexity analysis beyond control register changes (for example, SID audio filter features) and define and perform experiments that either validate the SSF-as-DNA approach or identify an alternative.
 
-Basic tools that implement modified register logging (section \ref{reglog}) on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate complexity analysis (section \ref{complexity}) and an experimental model (section \ref{sidtableflip}).
+Basic tools that implement modified register logging (section \ref{reglog}) on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate complexity analysis (section \ref{complexity}) and an experimental model (section \ref{sidtableflip}). 
 
 \subsection{Application of machine learning}
 
