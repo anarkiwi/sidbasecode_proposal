@@ -87,7 +87,8 @@ Following background in section \ref{background}, section \ref{methodology} will
 
 This section develops the Demoscene community and its values, the Commodore 64 as an instrument and its surprising complexity, and the proposed approach to studying the practice of musical performance and composition within the Demoscene community and on the Commodore 64 specifically. The Demoscene itself as a cultural phenomenon continues to be studied, as does the Commodore 64 itself.
 
-This research focuses on the technological boundary between these two fields, in not only how the community has expressed its creativity using Commodore 64 as an instrument, but also how that creativity has assumed new forms (and new complexity) over time. Since the Commodore 64 is a computer, this research also studies in effect the creation and innovation of computer programming techniques towards a specific application (creative musical works), using specific sound producing hardware within the Commodore 64 computer (the SID chip).
+This research focuses on the technological boundary between these two fields, in not only how the community has expressed its creativity using Commodore 64 as an instrument, but also how that creativity has assumed new forms (and new complexity) over time. Since the Commodore 64 is a computer, this research also studies in effect the creation and innovation of computer programming techniques towards a specific application (creative musical works), using specific sound producing hardware within the Commodore 64 computer (the SID chip). It follows that analysis tools and techniques developed in this research (operating on analysis of computer programming) may be transferrable to more advanced computer platforms and applications (for example, innovation in GPU shader programming
+for optimized machine learning or visual effects\cite{10.1145/3534540.3534688}).
 
 It is also necessary to contrast the Commodore 64 with other platforms of the period by describing its relative strength in expressive features and its potential for future exploration and to discuss the degree of intersection between the field of machine learning and this research.
 
@@ -112,7 +113,7 @@ For example, a competing platform of the period was the ZX Spectrum\cite{attrcla
 
 The NES (Nintendo Entertainment system) platform, like the SID chip, had multiple waveforms and voices, but no filters, though has been the subject of some musicological research\cite{nesmusic}.
 
-For these reasons expressive complexity on these other platforms is more limited and so they are not part of proposed research.
+For these reasons expressive complexity on these other platforms is more limited and so they are not part of the proposed research. However the research's applicability to both more limited and less limited platforms than the Commodore 64 could be explored.
 
 \subsection{Musicology tools}
 
@@ -255,6 +256,8 @@ The high data rate case is expected to be indicative of very specific synthesis 
 
 Given the SID has an envelope per voice, a convenient way to model a patch is from the envelope being triggered (when the GATE bit is set to 1). This distinguishes a new window (potentially encompassing many other SID writes, for example changing frequencies or waveforms) from a preceding window. This window can be described as a SID Sound Fragment. A SSF must include all information that could influence the output of a voice (including its FM paired voice, and filters). A SSF is essentially a DNA fragment, and is a set of register change entries that describe a patch that might be found in any given piece of music.
 
+Combined with metadata from the HVSC, it is possible to associate SSFs with composers and cluster variations of SSFs to understand their evolution over time, and also describe a composer's style bywhich SSFs they use and when.
+
 \subsection{SID patch model}
 
 A common patch description will be required to describe all possible SID programming methods, whether low or high data rate. This is likely to be an augmented SSF (SID Sound Fragment, section \ref{ssf}), represented at various levels of optional precision and resolution (for example optionally dropping frequency changes, to compare SSFs with the same waveform combinations regardless of pitch).
@@ -373,7 +376,7 @@ The thesis will be arranged as summarized in table \ref{table:timebudget} , with
 
 The analysis suite of tools used in the research will be open sourced, and may take different forms depending on reception by the Demoscene community. For example some of the register logging functionality may be integrated with the main line version of VICE emulator, while other tools will be maintained separately. This open sourcing will facilitate collaboration with Demoscene artists and support criticism and improvement of the attribution techniques.
 
-An explicit goal is a collaboration with an artist which may take the form of a partially generative performance, and/or a tool that enables an artist to identify the use of a particular technique in any arbitrary piece of music.
+An explicit goal is a collaboration with an artist which may take the form of a partially generative performance, and/or a tool that enables an artist to identify the use of a particular technique in any arbitrary piece of music (see section \ref{ssf}).
 
 The research will be proposed for presentation at a Demoparty in 2025 or 2026, where Demoscene artists will be engaged for their critical feedback.
 
