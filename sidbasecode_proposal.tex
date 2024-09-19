@@ -51,7 +51,7 @@
        \begin{abstract}
 Constraints have long been the drivers of creativity and innovation, as reputedly stated by Ernest Rutherford - “we haven’t the money, so we’ve got to think”\cite{think}.  Just as in physics, constraints (financial, technical and otherwise) have driven innovation in electronic music, such as with the invention of the acid bass genre based upon the modest capabilities of the Roland TB-303 synthesizer\cite{acidpatterns}.
 
-The Commodore 64, introduced in the early 1980s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer. This challenge continues to be answered today through creative, ongoing competitions within an informal international community known as the Demoscene.
+The Commodore 64, introduced in the early 1980s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer. This challenge continues to be answered today through creative, ongoing competitions within an informal international community known as the Demoscene. The Demoscene has been included in the German UNESCO Commission's Nationwide Inventory of Intangible Cultural Heritage\cite{heritage}.
 
 This research proposes to document, visualize and attribute to composers innovation in Commodore 64-based music using purpose built computational musicological tools and techniques. Music on the Commodore 64 is realized in the form of low level machine code due to the limitations of the platform, so is a form of software, and metaphorically similar to DNA in that it can be recombined, shared, and compared over time to understand the evolutionary aspect of innovation.
 
@@ -123,7 +123,7 @@ The proposed tools need to blur the line between conventional score (instruction
 
 \subsection{Machine code and original SID hardware}
 
-Given the lack of built-in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}.
+Given the lack of built-in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}. While Commodore 64 composition tools exist that avoid the need to write new machine code for each performance, the tools still require the composer to manipulate SID memory registers directly (for example via defMON's\cite{defmon} "SIDtab" interface). This low level approach informed the design of music Tracker applications generally\cite{trackers}.
 
 While several software and hardware emulations of the SID chip exist, the chip also exhibits significant performance differences (such as with combined waveforms \cite{fixcombwaveforms}) even within units of the same model number and revision. These differences have made behavior of the original hardware has proven difficult to reproduce exactly and emulator defects continue to be discovered particularly in advanced configurations. Therefore analysis must include not only methods to work with original hardware, but original machine code as well.
 
