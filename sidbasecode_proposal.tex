@@ -138,29 +138,28 @@ While several software and hardware emulations of the SID chip exist, the chip a
 
 As described in the SID patent\cite{sidpatent}, the SID implements three voices each of which has pulse, sawtooth, triangle and noise waveforms (from an internal pseudo random generator), and low, band and high pass filters. Waveforms may be selected in combination and voices may or may not be routed to an active filter. There is a 4 bit volume register affecting all the voices.
 
-\subsection{Generative synthesis}
-
-There are current examples of generative synthesis tools (where new patches are created or combined from existing patches). Two examples that work on Yamaha DX7 patches are NeuroDX7\cite{neurodx7} and DeepDX\cite{deepdx}, which read existing patches and generate new ones on demand. Another example is Neurorack\cite{neurorack} which generates audio directly in a modular synthesis context.
-
-A potential research outcome therefore may be a SID generative synthesis tool that permutes initial SID register state in a creative direction guided by a composer (for example, altering a snare drum patch over time), or permutes a Commodore 64 machine code program in real time that in turn produces sound.
-
 \subsection{Reverse engineering and authorship attribution}
 
 Several existing tools and approaches in the fields of reverse engineering and authorship attribution have been instrumental in establishing the practicality of this proposal's methodology.
 
 The field of software reverse engineering is extremely active, especially in security applications, for example in malware analysis and mitigation and attribution to criminal or state actors \cite{mohammed2022malgridvisualizationbinaryfeatures}. There are techniques such as styleometry\cite{10.1145/3292577} that identify software features that are characteristic of authors. These techniques may require source code to be available, and so tools such as NSA's Ghidra\cite{ghidra} are available that turn machine code into pseudo source code that is easier for programmers to analyze and for other tools to work with. Ghidra in particular is capable of parsing Commodore 64 machine code.
 
-\subsection{Machine learning}
+\subsection{Community and regulatory machine learning concerns}
 
-There was informal consultation with artists, machine learning content engineers, and the Centre of Data Science and Artificial Intelligence Te Whiri Kawe in the preparation of this proposal.
-
-The field of machine learning continues to rapidly advance especially in generative systems. There is every reason to expect continued rapid advances and increased accessibility to artists and the general public, new cultural concerns, and regulatory oversight.
+There was informal consultation with artists, machine learning content engineers, and the Centre of Data Science and Artificial Intelligence Te Whiri Kawe in the preparation of this proposal
+to understand potential concerns including ethical and regulatory contraints, and also community attitudes towards generative technology. The field of machine learning continues to rapidly advance especially in generative systems. There is every reason to expect continued rapid advances and increased accessibility to artists and the general public, new cultural concerns, and regulatory oversight.
 
 Artists expressed both concerns about the potential for capture and decontextualized exploitation of their work without their consent\cite{datacollect}, but also an openness to the possibility of new creative tools enabled by the technology\cite{creativityai}. The Centre discussed recent evolving regulation in the European Union making developers of certain models responsible for authenticating model-generated content\cite{euairegs}, and challenges around the policing of the use of open source models. Machine learning engineers (providing tools that can manipulate and generate new content) in the United States are guided by the NIST risk management framework\cite{nistai}, which may inform future regulation. The music rights management organization APRA AMCOS NZ recently reported its membership's concerns with machine learning and calls for regulation\cite{aprastory}. A recent exhibition of generative imagery, Sight Unseen\cite{sightunseen} was achieved with privately created photographic image dataset and privately curated models, exploring common concerns about dataset and model ownership. 
 
 The practicality of an open source generative model and its use in the detection of model produced music was also explored (see sidtableflip in section \ref{sidtableflip}). This preliminary work developed these concerns further, in demonstrating the feasibility of generating music and detecting the presence of a given artist in the training data set. These two capabilities are closely coupled at a software/model infrastructure level.
 
-These capabilities represent research challenges, partly in accommodating rapid advances (which can be managed by relying on standard industry frameworks), but potentially most importantly by evolving regulation. It can be foreseen that a research or non-commercial open source generative model could be exploited in ways not practical to constrain. This would make it potentially subject not just to philosophical concerns but regulatory ones.
+These capabilities represent research challenges, partly in accommodating rapid advances (which can be managed by relying on standard industry frameworks), but potentially most importantly by evolving regulation. It can be foreseen that a research or non-commercial open source generative model could be exploited in ways not practical to constrain. This would make it potentially subject not just to philosophical concerns but regulatory ones. The proposed research will therefore not be dependant upon on machine learning technology (section \ref{applyml}), but may use machine learning creatively.
+
+\subsection{Generative synthesis}
+
+There are current examples of generative synthesis tools (where new patches are created or combined from existing patches). Two examples that work on Yamaha DX7 patches are NeuroDX7\cite{neurodx7} and DeepDX\cite{deepdx}, which read existing patches and generate new ones on demand. Another example is Neurorack\cite{neurorack} which generates audio directly in a modular synthesis context.
+
+A potential research outcome therefore may be a SID generative synthesis tool that permutes initial SID register state in a creative direction guided by a composer (for example, altering a snare drum patch over time), or permutes a Commodore 64 machine code program in real time that in turn produces sound (see sidtableflip preliminary work in section \ref{sidtableflip}).
 
 \section{Methodology}
 \label{methodology}
@@ -287,6 +286,15 @@ The preceding analysis and visualizations will then support a systematic descrip
 
 Aside from tools intended for analysis, tools will be developed to creatively permute and rearrange patches/SID Sound Fragments that support the creation of new works in collaboration with Demoscene artists. Anticipated functionality of such tools would include the evolution over time of the timbre of a sound, such as a drone texture, or the efficient exploration of complex timbres by automatically identifying new, unique sequences not found in existing works, which would be another dimension of contribution to the Demoscene community.
 
+\subsection{Use of machine learning}
+\label{applyml}
+
+While machine learning research tools have fewer regulatory restraints and may be considered low or limited risk in some creative contexts, given the rapid development of the machine learning field in general (particularly powerful and accessible machine learning frameworks such as PyTorch and TensorFlow), it will become more challenging to delineate research from non-research machine learning tools due to significant shared technical infrastructure. There is also historical precedent of regulation of the export of encryption and other signal processing techniques such as passive radar\cite{munitions}, where research exemptions may not be permitted. These precedents and clear calls for regulation introduce liability concerns for machine learning engineers as well as artists.
+
+Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A first principles algorithmic approach based on SSF (section \ref{ssf}) classification and difference metrics will be used.
+
+However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model-based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
+
 \subsection{Methodology summary}
 
 In the development of this proposal some rudimentary tools have been developed (section \ref{prelim}), which have in turn also suggested probable analysis components such as the SID Sound Fragment as part of the DNA sequencing metaphor. The proposed SID Sound Fragment could be compared between performances and composers at varying levels of precision. The proposed Methodology has been developed around the High Voltage SID Collection, but can be applied to any Commodore 64 software, and so the research could be expanded to other collections.
@@ -300,14 +308,6 @@ In the development of this proposal some rudimentary tools have been developed (
 The tools and concepts discussed in Methodology were developed and applied to the High Voltage SID collection as discussed below. The goal of the preliminary work was to informally gauge artistic interest and value of the research and obtain a high level understanding of complexity of performances (specifically, whether the level of complexity was sufficient to research). The direct next steps would be to expand the complexity analysis beyond control register changes (for example, SID audio filter features) and define and perform experiments that either validate the SSF-as-DNA approach or identify an alternative.
 
 Basic tools that implement modified register logging (section \ref{reglog}) on the VICE emulator\cite{asidvice} to provide scope for the research, and to inform the initial SSF/sequencing concept were written to facilitate complexity analysis (section \ref{complexity}) and an experimental model (section \ref{sidtableflip}). 
-
-\subsection{Application of machine learning}
-
-While machine learning research tools have fewer regulatory restraints and may be considered low or limited risk in some creative contexts, given the rapid development of the machine learning field in general (particularly powerful and accessible machine learning frameworks such as PyTorch and TensorFlow), it will become more challenging to delineate research from non-research machine learning tools due to significant shared technical infrastructure. There is also historical precedent of regulation of the export of encryption and other signal processing techniques such as passive radar\cite{munitions}, where research exemptions may not be permitted. These precedents and clear calls for regulation introduce liability concerns for machine learning engineers as well as artists.
-
-Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A non-machine learning, conventionally algorithmic approach is described following.
-
-However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model-based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
 
 \subsection{sidtableflip}
 \label{sidtableflip}
