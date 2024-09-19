@@ -224,30 +224,30 @@ The VICE Commodore 64 emulator\cite{asidvice} provides a debugging “dump” fu
 
 The fundamental analysis technique for the thesis is the segmentation of sub sequences of SID register calls at enumerated intervals within the sequence accomplishing an entire performance. Then, identifying repeated sequences and variations and comparing sequences across many thousands of performances.
 
-There are several anticipated stages in segmentation. It is assumed that for a given SID chip (emulated or otherwise) initialized to the same state, that the same sequence of instructions will result in the same output. This assumption will need to be verified throughout as if not correct would invalidate comparison. It is also expected that a set of different sequences may result in the same audio output, so there may be a many to one relationship for a given audio output.
+There are several anticipated stages in segmentation. It is assumed that for a given SID chip (emulated or otherwise) initialized to the same state, that the same sequence of instructions will result in the same output. This assumption will need to be verified throughout as if not correct would invalidate comparison. It is also expected that a set of different sequences may result in the same audio output, so there may be a many to one relationship for a given audio output. Further anticipated complexities in sequence segementation are discussed below.
 
-\subsection{Redundant state}
+\subsubsection{Redundant state}
 \label{redundantstate}
 
 It follows also that there may be sequences that produce no change in audio output (for example, repeatedly writing the same value to a frequency register, or writing a value to a register with less than 8 significant bits). These sequences can be eliminated because by definition their significance is inaudible.
 
 Depending on the machine code making the SID register calls, there may be variation in the time taken between individual items in a sequence (for example, one playroutine might take longer to calculate a new frequency value than another using a different algorithm, even though both playroutines end up calculating the same value). This difference may or may not be audible. A threshold will have to be defined (for example, if SID register changes are accomplished within one audio sample time at 44.1kHz no difference would be observed). Nonetheless, verification of the significance (or non significance) of small differences in timing between the same register calls will be required.
 
-\subsection{ADSR envelope bugs}
+\subsubsection{ADSR envelope bugs}
 
 One of the SID chip’s most documented flaws is in the ADSR envelope generator. How the envelope operates upon triggering depends upon its previous state (which phase it was in with what configuration) when it was last triggered, unless enough time has passed to cause the envelope’s accumulator state to return to its initialized state. This requires careful management by the composer of ADSR and voice state to ensure the envelope operates, otherwise some envelope phases may be skipped or truncated causing undesired artifacts. As these management techniques are expressed in precisely timed register changes they are captured in the register logging model. Composer management of this flaw is a specific example of a kind of expression to be studied throughout the research. It will be possible to precisely compare the different approaches found to establish which is the most reliable and predictable, identify a previously undocumented technique, or identify a new more effective technique through automated experimentation and comparison on original Commodore 64 hardware.
 
-\subsection{Evolution of SID sample playback}
+\subsubsection{Evolution of SID sample playback}
 
 While the SID chip was not originally specified to include digital sample playback, multiple playback methods have been independently discovered. The most simple method is using the volume register as a 4 bit DAC, while the more complex methods involve using multiple voices together to produce higher resolution waveforms (sometimes in combination with the volume register). As a thesis research outcome, a section with a detailed analysis of the techniques and the ancillary techniques (e.g. digital signal processing) will be included.
 
-\subsection{Voice multiplexing}
+\subsubsection{Voice multiplexing}
 
 The SID chip's 3 voices can be configured in pairs for some FM effects. A given voice may only be paired with a fixed choice of one other (for example, voices 1 and 3 are paired). Due to the very small number of voices available, composers made extensive use of multiplexing, for example executing a percussion sound sequence on voice 1, then executing a simple pulse wave on voice 1 while executing the same percussion sound sequence on voice 2. It is assumed that all single voices are interchangeable, and that all voice pairs are interchangeable, assumptions that must be verified.
 
 All voices are affected by the volume register and can be selectively routed to the filters. There is therefore another kind of sequence state to be considered: individual voice states paired with a specific filter and volume state. These combinations must be modeled for comparison.
 
-\subsection{High/low data rate}
+\subsubsection{High/low data rate}
 
 Based on preliminary work on complexity assessment (section \ref{complexity}) a wide range of complexity in playroutines is anticipated, from very simple, monophonic and mono timbral to extremely complex performances incorporating voice 3 feedback, digital samples and FM synthesis. It is also anticipated that playroutines may be separated broadly into two groups - low data rate (where the SID chip is programmed strictly on timer intervals of several or perhaps even 10s of milliseconds), and high data rate (where SID chip writes are required potentially several times per millisecond).
 
@@ -261,7 +261,7 @@ The high data rate case is expected to be indicative of very specific synthesis 
 \caption{SSF envelope}
 \end{figure}
 
-Given the SID has an envelope per voice, a convenient way to model a patch is from the envelope being triggered (when the GATE bit is set to 1). This distinguishes a new window (potentially encompassing many other SID writes, for example changing frequencies or waveforms) from a preceding window. This window can be described as a SID Sound Fragment, a concept resulting from the complexity analysis done in section \ref{complexity} which demonstrated the importance of control register changes (including GATE) in observed code. A SSF must include all information that could influence the output of a voice (including its FM paired voice, and filters). A SSF is essentially a DNA fragment, and is a set of register change entries that describe a patch that might be found in any given piece of music.
+Given the SID has an envelope per voice, a convenient way to model a patch as a sequence is from the envelope being triggered (when the GATE bit is set to 1). This distinguishes a new window (potentially encompassing many other SID writes, for example changing frequencies or waveforms) from a preceding window. This window can be described as a SID Sound Fragment, a concept resulting from the complexity analysis done in section \ref{complexity} which demonstrated the importance of control register changes (including GATE) in observed code. A SSF must include all information that could influence the output of a voice (including its FM paired voice, and filters). A SSF is essentially a DNA fragment, and is a set of register change entries that describe a patch that might be found in any given piece of music.
 
 Combined with metadata from the HVSC, it is possible to associate SSFs with composers and cluster variations of SSFs to understand their evolution over time, and also describe a composer's style bywhich SSFs they use and when.
 
