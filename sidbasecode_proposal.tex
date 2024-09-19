@@ -117,7 +117,7 @@ For these reasons expressive complexity on these other platforms is more limited
 
 \subsection{Musicology tools}
 
-There are existing tools for musicological analysis such as Music21\cite{music21} which enables high level score analysis and comparison of composition features such as key transitions and beat signatures. There are also tools for extracting sonic features from music such as torchaudio\cite{hwang2023torchaudio}, such as the Mel-frequency cepstrum which can be used for machine learning based audio similarity analysis. The proposed research goes beyond this level of detail to focus on expression, and will produce new tools that operate at a patch/waveform/microsecond (MHz) level rather than a more human-centric note/bar/measure level or even audio sample (kHz) level.
+There are existing tools for musicological analysis such as Music21\cite{music21} which enables high level score analysis and comparison of composition features such as key transitions and beat signatures. There are also tools for extracting sonic features from music such as torchaudio\cite{hwang2023torchaudio}, such as the Mel-frequency cepstrum which can be used for machine learning based audio similarity analysis. These tools all provide features that can identify a probable composer for a specific form of music using machine learning\cite{Yang021-4}. The proposed research goes beyond this level of detail to focus on expression, and will produce new tools that operate at a patch/waveform/microsecond (MHz) level rather than a more human-centric note/bar/measure level or even audio sample (kHz) level.
 
 This level of detail is necessary because notation intended for human musicians does not define patch parameters such as waveform or FM algorithm, and MIDI-based tools such as Music21, ChiptuneSAK\cite{ChiptuneSAK} or Magenta\cite{Magenta} cannot achieve the level of detail required to capture audio sample level expression.
 
@@ -282,18 +282,18 @@ With a patch model and varying difference metrics it will be possible to produce
 
 The preceding analysis and visualizations will then support a systematic description of each of the distinct programming techniques identified and an elucidation of their propagation over time. Aside from digital synthesis playback such major techniques are anticipated to include ADSR envelope management and single voice combined waveforms.
 
-\subsection{Creative work}
-
-Aside from tools intended for analysis, tools will be developed to creatively permute and rearrange patches/SID Sound Fragments that support the creation of new works in collaboration with Demoscene artists. Anticipated functionality of such tools would include the evolution over time of the timbre of a sound, such as a drone texture, or the efficient exploration of complex timbres by automatically identifying new, unique sequences not found in existing works, which would be another dimension of contribution to the Demoscene community.
-
 \subsection{Use of machine learning}
 \label{applyml}
 
 While machine learning research tools have fewer regulatory restraints and may be considered low or limited risk in some creative contexts, given the rapid development of the machine learning field in general (particularly powerful and accessible machine learning frameworks such as PyTorch and TensorFlow), it will become more challenging to delineate research from non-research machine learning tools due to significant shared technical infrastructure. There is also historical precedent of regulation of the export of encryption and other signal processing techniques such as passive radar\cite{munitions}, where research exemptions may not be permitted. These precedents and clear calls for regulation introduce liability concerns for machine learning engineers as well as artists.
 
-Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A first principles algorithmic approach based on SSF (section \ref{ssf}) classification and difference metrics will be used.
+Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A first principles algorithmic approach based on SSF (section \ref{ssf}) classification and difference metrics will be used primarily. As the regulatory environment evolves it may be possible to incorporate machine learning tools.
 
 However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model-based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
+
+\subsection{Creative work}
+
+Aside from tools intended for analysis, tools will be developed to creatively permute and rearrange patches/SID Sound Fragments that support the creation of new works in collaboration with Demoscene artists. Anticipated functionality of such tools would include the evolution over time of the timbre of a sound, such as a drone texture, or the efficient exploration of complex timbres by automatically identifying new, unique sequences not found in existing works, which would be another dimension of contribution to the Demoscene community.
 
 \subsection{Methodology summary}
 
