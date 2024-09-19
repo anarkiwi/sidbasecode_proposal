@@ -51,9 +51,9 @@
        \begin{abstract}
 Constraints have long been the drivers of creativity and innovation, as reputedly stated by Ernest Rutherford - “we haven’t the money, so we’ve got to think”\cite{think}.  Just as in physics, constraints (financial, technical and otherwise) have driven innovation in electronic music, such as with the invention of the acid bass genre based upon the modest capabilities of the Roland TB-303 synthesizer\cite{acidpatterns}.
 
-The Commodore 64, introduced in the early 1980’s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer. This challenge continues to be answered today through creative, ongoing competitions within an informal international community known as the Demoscene.
+The Commodore 64, introduced in the early 1980s combined a simple synthesizer (the SID chip) with an accessible and low cost computer. This combination laid down the technical and creative challenge of realizing new sonic capabilities despite the limitations of the computer. This challenge continues to be answered today through creative, ongoing competitions within an informal international community known as the Demoscene.
 
-This research proposes to document, visualize and attribute to composers innovation in Commodore 64 based music using purpose built computational musicological tools and techniques. Music on the Commodore 64 is realized in the form of low level machine code due to the limitations of the platform, so is a form of software, and metaphorically similar to DNA in that it can be recombined, shared, and compared over time to understand the evolutionary aspect of innovation.
+This research proposes to document, visualize and attribute to composers innovation in Commodore 64-based music using purpose built computational musicological tools and techniques. Music on the Commodore 64 is realized in the form of low level machine code due to the limitations of the platform, so is a form of software, and metaphorically similar to DNA in that it can be recombined, shared, and compared over time to understand the evolutionary aspect of innovation.
 
 The research will use a community curated collection of Commodore 64 music known as the High Voltage SID Collection (HVSC), and the results (particularly attribution of innovation which is a core Demoscene value) will be contributed back to the Demoscene community, including any new sonic techniques discovered and potentially new creative musical work in collaboration with Demoscene artists.
          \end{abstract}
@@ -70,7 +70,7 @@ The research will use a community curated collection of Commodore 64 music known
 
   At first glance, musicological analysis of music on the reputedly best selling computer of all time, the Commodore 64\cite{ieeec64}, might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. The chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters.
 
-  The chip was also integrated into Elektron’s first commercial product, the SIDStation\cite{sidstation}.  The SIDStation made SID programming much more accessible to musicians allowing patches (a patch being proprietary configuration describing how to produce a certain sound) to be programmed and sequenced via the MIDI protocol from other industry standard music hardware and software. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
+  The chip was also integrated into synthesizer company Elektron’s first commercial product, the SIDStation\cite{sidstation}.  The SIDStation made SID programming much more accessible to musicians allowing patches (a patch being proprietary configuration describing how to produce a certain sound) to be programmed and sequenced via the MIDI protocol from other industry standard music hardware and software. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
 
 SID chip programming on the original Commodore 64 involves carefully constructed sequences of changes to memory registers at carefully chosen intervals, which in many cases requires writing machine code for the Commodore 64's rudimentary (by contemporary standards) 6502-based CPU. These sequences are analogous to DNA - a given performance will include sequences programmed by a composer, either of their own invention (including re-sequencing from another performance that might use similar patches), or sequences recovered from the work of others.
 
@@ -82,7 +82,7 @@ The research will make systematic study of all known SID programming sequences (
 
   \subsection{Overview}
 
-This section develops the  the Demoscene community and its values, the Commodore 64 as an instrument and its surprising complexity, and the proposed approach to studying the practice of musical performance and composition within the Demoscene community and on the Commodore 64 specifically. The Demoscene itself as a cultural phenomenon continues to be studied, as does the Commodore 64 itself.
+This section develops the Demoscene community and its values, the Commodore 64 as an instrument and its surprising complexity, and the proposed approach to studying the practice of musical performance and composition within the Demoscene community and on the Commodore 64 specifically. The Demoscene itself as a cultural phenomenon continues to be studied, as does the Commodore 64 itself.
 
 This research focuses on the technological boundary between these two fields, in not only how the community has expressed its creativity using Commodore 64 as an instrument, but also how that creativity has assumed new forms (and new complexity) over time. Since the Commodore 64 is a computer, this research also studies in effect the creation and innovation of computer programming techniques towards a specific application (creative musical works), using specific sound producing hardware within the Commodore 64 computer (the SID chip).
 
@@ -99,7 +99,7 @@ Demoscene culture is also characterized in part by cultural gatekeepers with imp
 \subsection{High Voltage SID Collection}
 \label{hvsc}
 
-One way the Demoscene expresses and curates its creative works is through community collections such as the High Voltage SID Collection\cite{hvsc}. This collection represents the perfect subject of creative study because it includes not only the complete creative works themselves but the metadata attributing composer and release date, all in a machine readable format. At the time of writing, the collection (version 81) includes over 58,000 songs. The collection also contains some performances which have not yet been attributed to a composer (an explicit research goal is to attribute these performances).
+One way the Demoscene expresses and curates its creative works is through community collections such as the High Voltage SID Collection\cite{hvsc}. This collection represents a very good subject of creative study because it includes not only the complete creative works themselves but the metadata attributing composer and release date, all in a machine readable format. At the time of writing, the collection (version 81) includes over 58,000 songs. The collection also contains some performances which have not yet been attributed to a composer (an explicit research goal is to attribute these performances).
 
 While it cannot be proven to include every known Commodore 64 performance, as it relies upon community contributions, informal consultation with Demoscene artists suggest that it is a representative collection, and if there are other sources available they will be accommodated during the research (given that the performances in other collections would also be machine code, they are amenable to the same analysis and tools).
 
@@ -123,7 +123,7 @@ The proposed tools need to blur the line between conventional score (instruction
 
 \subsection{Machine code and original SID hardware}
 
-Given the lack of built in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}.
+Given the lack of built-in sound software in the Commodore 64 and the relatively modest computational performance of the CPU, the SID chip capabilities can only be fully utilized with optimized 6502 machine code\cite{c64digi}.
 
 While several software and hardware emulations of the SID chip exist, the chip also exhibits significant performance differences (such as with combined waveforms \cite{fixcombwaveforms}) even within units of the same model number and revision. These differences have made behavior of the original hardware has proven difficult to reproduce exactly and emulator defects continue to be discovered particularly in advanced configurations. Therefore analysis must include not only methods to work with original hardware, but original machine code as well.
 
@@ -296,7 +296,7 @@ While machine learning research tools have fewer regulatory restraints and may b
 
 Therefore, while the proposed research will be informed by the field of machine learning, it will in no way rely upon it for the core musicological goals to manage the dual risks of misuse of the research tools and regulatory constraints on research publication. A non-machine learning, conventionally algorithmic approach is described following.
 
-However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
+However, with the explicit permission from and collaboration with an artist, it may be possible to realize some creative, generative model-based work. Ethical, compliance and regulatory concerns will be monitored throughout, and machine learning techniques may be engaged where creatively appropriate (potentially by producing non-open source creative tools not part of the core research activity).
 
 \subsection{sidtableflip}
 \label{sidtableflip}
@@ -305,7 +305,7 @@ An experimental model named sidtableflip\cite{sidtableflip}, based on the PyTorc
 
 sidtableflip is based on PyTorch reference text generator’s Transformer architecture\cite{pytexample}, with the most significant difference in tokenizing the register log - each unique register assignment in the log is a token. A convention in text generation models is incorporation of punctuation with each word (e.g. assuring ”word,” and word!” are different tokens with their accompanying context).
 
-Since sidtableflip incorporates the time since the last register change with each token, it effectively includes the musical ”punctuation” in the form of cadence and tempo. A 4 layer Transformer with 2 attention heads and 256 embedding dimensions, predicting 2048 call sequences, takes approximately 1 day to train over 64 songs, comprising a sequence 3 million tokens long with approximately 20000 unique tokens.
+Since sidtableflip incorporates the time since the last register change with each token, it effectively includes the musical punctuation in the form of cadence and tempo. A 4 layer Transformer with 2 attention heads and 256 embedding dimensions, predicting 2048 call sequences, takes approximately 1 day to train over 64 songs, comprising a sequence 3 million tokens long with approximately 20000 unique tokens.
 
 \subsection{Waveform complexity visualization}
 \label{complexity}
@@ -335,7 +335,7 @@ The research will explore this more deeply with tools that can selectively focus
 
 In development of the proposal the complexity and scope of the dataset was explored, prototype tools were developed, and there was extensive engagement with influential artists in the field. Two important results were obtained, firstly that artists saw the value of algorithm-assisted attribution to their community, and also the value of future tools that could assist in the discovery of new expressive techniques. Secondly, the prototype research tools support the assertion that a complete examination and analysis of the entire dataset is practical to achieve, and that despite the simplicity of the underlying technology, that there is complexity of research interest.
 
-\section{Thesis structure}
+\section{Proposed thesis structure}
 
 The thesis will be arranged as summarized in table \ref{table:timebudget} , with an approximate time budget relative to a 3 year timeframe. The bulk of the time is anticipated to be spent on the identification of techniques themselves followed by the study of how the techniques have evolved and propagated between artists.
 
@@ -368,15 +368,13 @@ The thesis will be arranged as summarized in table \ref{table:timebudget} , with
 \end{table*}
 
 
-  \subsection{Dissemination}
+  \subsection{Dissemination and datasets}
 
-  The analysis suite of tools used in the research will be open sourced, and may take different forms depending on reception by the Demoscene community. For example some of the register logging functionality may be integrated with the main line version of VICE emulator, while other tools will be maintained separately. This open sourcing will facilitate collaboration with Demoscene artists and support criticism and improvement of the attribution techniques.
+The analysis suite of tools used in the research will be open sourced, and may take different forms depending on reception by the Demoscene community. For example some of the register logging functionality may be integrated with the main line version of VICE emulator, while other tools will be maintained separately. This open sourcing will facilitate collaboration with Demoscene artists and support criticism and improvement of the attribution techniques.
 
-  An explicit goal is a collaboration with an artist which may take the form of a partially generative performance, and/or a tool that enables an artist to identify the use of a particular technique in any arbitrary piece of music.
+An explicit goal is a collaboration with an artist which may take the form of a partially generative performance, and/or a tool that enables an artist to identify the use of a particular technique in any arbitrary piece of music.
 
-  The research will be proposed for presentation at a Demoparty in 2025 or 2026, where Demoscene artists will be engaged for their critical feedback.
-
-  \subsection{Datasets}
+The research will be proposed for presentation at a Demoparty in 2025 or 2026, where Demoscene artists will be engaged for their critical feedback.
 
 Aside from performance opportunities that may arise during the course of the research, the primary dataset to be produced (aside from the visualizations described above), together with a tool will enumerate the relationships between a given performance and all other known performances.	The tools and resulting research are proposed to be submitted for publication progressively and iteratively throughout (for example, starting with a paper discussing waveform complexity over time).
 
