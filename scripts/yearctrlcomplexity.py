@@ -70,5 +70,6 @@ for i, node_pair_count in enumerate(
     edge = pydot.Edge(nodes[from_node], nodes[to_node])
     edge.set_penwidth(max(int(count / total * 100), 1))
     graph.add_edge(edge)
+    print(i, ctrlbitlabels(from_node), ctrlbitlabels(to_node), round(count / total * 100, 2))
 
 graph.write_png(f"{year}.png")

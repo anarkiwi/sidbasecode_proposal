@@ -68,7 +68,7 @@ The research will use a community curated collection of Commodore 64 music known
 
   \section{Introduction}
 
-  At first glance, musicological analysis of music on the reputedly best selling computer of all time, the Commodore 64\cite{ieeec64}, might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. The chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters.
+  At first glance, musicological analysis on the best selling computer of all time, the Commodore 64\cite{ieeec64}, might appear trivial as the hardware is simple, well documented, and was designed in the late 1970s. Despite this simplicity, the Commodore 64 computer contained an advanced (for the time) synthesizer called the Sound Interface Device\cite{sidpatent} or SID chip. The chip has features recognizable in commodity synthesizers today - multiple voices and waveforms, and software controllable filters.
 
   The chip was also integrated into synthesizer company Elektron’s first commercial product, the SIDStation\cite{sidstation}.  The SIDStation made SID programming much more accessible to musicians allowing patches (a patch being proprietary configuration describing how to produce a certain sound) to be programmed and sequenced via the MIDI protocol from other industry standard music hardware and software. Thanks to continuing innovation in the form of the SIDStation and other tools, interest and creative use of the SID continues to this day beyond its original platform within the Commodore 64.
 
@@ -87,8 +87,7 @@ Following background in section \ref{background}, section \ref{methodology} will
 
 This section develops the Demoscene community and its values, the Commodore 64 as an instrument and its surprising complexity, and the proposed approach to studying the practice of musical performance and composition within the Demoscene community and on the Commodore 64 specifically. The Demoscene itself as a cultural phenomenon continues to be studied, as does the Commodore 64 itself.
 
-This research focuses on the technological boundary between these two fields, in not only how the community has expressed its creativity using Commodore 64 as an instrument, but also how that creativity has assumed new forms (and new complexity) over time. Since the Commodore 64 is a computer, this research also studies in effect the creation and innovation of computer programming techniques towards a specific application (creative musical works), using specific sound-producing hardware within the Commodore 64 computer (the SID chip). It follows that analysis tools and techniques developed in this research (operating on analysis of computer programming) may be transferable to more advanced computer platforms and applications (for example, innovation in GPU shader programming
-for optimized machine learning or visual effects\cite{10.1145/3534540.3534688}).
+This research focuses on the technological boundary between these two fields, in not only how the community has expressed its creativity using Commodore 64 as an instrument, but also how that creativity has assumed new forms (and new complexity) over time. Since the Commodore 64 is a computer, this research also studies in effect the creation and innovation of computer programming techniques towards a specific application, the creative musical works), using specific sound-producing SID hardware within the Commodore 64 computer. It follows that analysis tools and techniques developed in this research which rely on analysis of computer programming may be transferable to more advanced computer platforms and applications, for example, innovation in GPU shader programming for optimized machine learning or visual effects\cite{10.1145/3534540.3534688}.
 
 It is also necessary to contrast the Commodore 64 with other platforms of the period by describing its relative strength in expressive features and its potential for future exploration and to discuss the degree of intersection between the field of machine learning and this research.
 
@@ -103,7 +102,7 @@ Demoscene culture is also characterized in part by cultural gatekeepers with imp
 
 One way the Demoscene expresses and curates its creative works is through community collections such as the High Voltage SID Collection\cite{hvsc}. This collection represents a very good subject of creative study because it includes not only the complete creative works themselves but the metadata attributing composer and release date, all in a machine readable format. At the time of writing, the collection (version 81) includes over 58,000 songs. The collection also contains some performances which have not yet been attributed to a composer (an explicit research goal is to attribute these performances).
 
-While it cannot be proven to include every known Commodore 64 performance, as it relies upon community contributions, informal consultation with Demoscene artists suggest that it is a representative collection, and if there are other sources available they will be accommodated during the research (given that the performances in other collections would also be machine code, they are amenable to the same analysis and tools).
+While it cannot be proven to include every known Commodore 64 performance, as it relies upon community contributions, consultation with Demoscene artists suggest that it is a representative collection, and if there are other sources available they will be accommodated during the research (given that the performances in other collections would also be machine code, they are amenable to the same analysis and tools).
 
 \subsection{Contemporaneous computing platforms}
 
@@ -320,19 +319,19 @@ The research will explore this more deeply with tools that can selectively focus
 
 \begin{figure*}
 \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{1982}}
-\caption{1982}
+\caption{In 1982 33 unique transitions, 47\% of all transitions are simply enabling/disabling the triangle waveform, the TEST bit is only used in isolation.}
 \label{c1982}
 \end{figure*}
 
 \begin{figure*}
 \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{1983}}
-\caption{1983}
+\caption{1983: 165 unique transitions, 55\% of all transitions involve using each single waveform possibility in isolation, < 1\% use the TEST bit in combination with a waveform.}
 \label{c1983}
 \end{figure*}
 
 \begin{figure*}
 \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{1984}}
-\caption{1984}
+\caption{1984: 305 unique transitions, 42\% of all transitions involve the pulse waveform in isolation, > 10\% use TEST bit with combinations of waveforms.}
 \label{c1984}
 \end{figure*}
 
@@ -412,7 +411,7 @@ This research introduces a rich new level of musicological detail in analyzing e
 
 Since also the central research approach involves attribution of the output of machine code programs, it may have non-musical applications (for example in computer security, attributing authorship of very low level computer malware).
 
-Finally, this research will support the recognition and attribution of innovation within the Demoscene community, suggest new areas of expression to explore, and make it easier with tools for Demoscene musicians to build upon each other’s work while retaining attribution of contributions. With future work, these benefits may be transferable to practices for other kinds of electronic music.
+Finally, this research will support the recognition and attribution of innovation within the Demoscene community, suggest new areas of expression to explore, and make it easier with tools for Demoscene musicians to build upon each other’s work while retaining attribution of contributions. As regulation evolves more pathways for artists to opt-in to machine learning tools and techniques may become apparent. And with future work, these benefits may be transferable to practices for other kinds of electronic music
 
 
 % \clearpage
